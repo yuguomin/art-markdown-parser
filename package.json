@@ -1,0 +1,21 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ygm",
+  "dependencies": {
+    "babylon": "7.0.0-beta.47",
+    "marked": "0.6.0",
+    "recast": "0.17.3",
+    "typescript-parser": "2.6.1"
+  },
+  "devDependencies": {
+    "@types/babylon": "6.16.5",
+    "@types/node": "11.9.4",
+    "@types/marked": "0.6.3"
+  }
+}
