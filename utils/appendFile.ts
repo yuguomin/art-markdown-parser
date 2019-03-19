@@ -16,7 +16,7 @@ export const appendInterfaceTofile = (interfaceName, interfaceBody, finalName?: 
   }
   result.declaration = singleChunk
   appendFileSync(
-    './result/test.ts',
+    './result/result.ts',
     `\n${recast.print(result).code}`,
     'utf8'
   );
