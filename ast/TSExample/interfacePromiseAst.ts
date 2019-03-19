@@ -28,17 +28,34 @@ const interfaceAst = {
         typeAnnotation: {
           type: "TSTypeAnnotation",
           typeAnnotation: {
-            type: "", // annotation type
-            elementType: {
-              type: 'TSTypeReference',
-              typeName: {
-                type: "Identifier",
-                name: "" // array interface anntation name
-              }
-            },
+            type: "TSTypeReference", // annotation type
             typeName: {
               type: "Identifier",
-              name: "" // obj interface anntation name
+              name: "Promise"
+            },
+            typeParameters: {
+              type: "TSTypeParameterInstantiation",
+              params: [
+                {
+                  type: "TSTypeReference",
+                  typeName: {
+                    type: "Identifier",
+                    name: "AjaxResult"
+                  },
+                  typeParameters: {
+                    type: "TSTypeParameterInstantiation",
+                    params: [
+                      {
+                        type: "TSTypeReference",
+                        typeName: {
+                          type: "Identifier",
+                          name: "" // every interface name
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
             }
           }
         }

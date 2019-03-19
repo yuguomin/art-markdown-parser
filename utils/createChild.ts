@@ -1,6 +1,7 @@
-import { firstWordUpperCase, toHump } from './tools';
+import { firstWordUpperCase, toHump, objDeepCopy } from './tools';
 import { appendInterfaceTofile } from './appendFile';
 import { createInterfaceBody } from './createBody';
+import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 
 /** 
  * 当父节点不为data && 其类型为array或者object时需要创建一个interface
@@ -8,5 +9,6 @@ import { createInterfaceBody } from './createBody';
  */
 export const createChildrenInterface = (childrenBody, parentName, finalName, prefixName) => {
   prefixName = prefixName + toHump(firstWordUpperCase(parentName), '.');
-  appendInterfaceTofile(parentName, createInterfaceBody(childrenBody, parentName, prefixName), finalName)
+  const ast = objDeepCopy(ExportInterfaceAst) as any;
+  appendInterfaceTofile(parentName, createInterfaceBody(childrenBody, parentName, prefixName), ast, finalName);
 }
