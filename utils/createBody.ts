@@ -1,6 +1,6 @@
 
 import { findAllIndex, firstWordUpperCase, objDeepCopy } from './tools';
-import ExportInterfaceAst from '../ast/TSExample/exportInterfaceAst';
+import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 import { getTypeAnnotation } from './getAnnotation';
 import { createChildrenInterface } from './createChild';
 import { isRepeatName } from './createName';
@@ -11,15 +11,13 @@ export const createInterfaceBody = (explainTable: any, currentParent, prefixName
   const [
     nameIndex,
     typeIndex,
-    explainIndex,
     parentsIndex,
-    exampleIndex
   ] = findAllIndex(
-    ['参数名', '类型', '说明', 'parents', '示例'],
+    ['参数名', '类型', 'parents'],
     explainTable.header
   );
   const result = [];
-  explainTable.cells.forEach((value, index) => {
+  explainTable.cells.forEach(value => {
     const bodyTemplate = objDeepCopy(
       ExportInterfaceAst.body.body[0]
       ) as any;

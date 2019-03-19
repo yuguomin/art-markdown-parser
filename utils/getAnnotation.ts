@@ -1,6 +1,6 @@
 import { objDeepCopy } from './tools';
 import { TypeAnnotations } from '../ast/typeAnnotationsMap';
-import ExportInterfaceAst from '../ast/TSExample/exportInterfaceAst';
+import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 
 export const getTypeAnnotation = (type, name) => {
   const anntationTpl = objDeepCopy(ExportInterfaceAst.body.body[0].typeAnnotation) as any;

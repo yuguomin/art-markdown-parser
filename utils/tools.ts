@@ -17,8 +17,19 @@ export const toHump = (str: string, symbol: string = '/'): string => {
  * @example firstWordUpperCase('asd') return Asd
 */
 export const firstWordUpperCase = (str: string): string => {
-  return str.toLowerCase().replace(/(\s|^)[a-z]/g, function(char){
+  return str.replace(/(\s|^)[a-z]/g, function(char){
       return char.toUpperCase();
+  });
+}
+
+/** 
+ * @description 字符串首字母小写
+ * @param {String} str 需要转换的字符串
+ * @example firstWordLowerCase('AsD') return asD
+*/
+export const firstWordLowerCase = (str: string): string => {
+  return str.replace(/(\s|^)[A-Z]/g, function(char){
+      return char.toLowerCase();
   });
 }
 

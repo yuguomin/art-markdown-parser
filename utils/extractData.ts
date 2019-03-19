@@ -4,7 +4,7 @@
  * @param {Array} mdAst 一个解析后的md语法树
  * @returns {Array} 返回一个由每个api的解析结果组成的数组
 */
-export const extractAllInterfaceChunk = (mdAst): never[] => {
+export const extractAllInterfaceChunk = (mdAst, findTableNames: string[]): never[] => {
   // extract every interface detail and explain add to an Object and push an Array
   const interfaceGather = [];
   let chunkStart = 0;
@@ -12,7 +12,7 @@ export const extractAllInterfaceChunk = (mdAst): never[] => {
     if (value.type === 'list_start' && index) {
       const chunkData = mdAst.slice(chunkStart, index);
       interfaceGather.push(extractUseTables(
-        ['detail', 'explain'],
+        findTableNames,
         chunkData
       ) as never);
     }
@@ -22,7 +22,7 @@ export const extractAllInterfaceChunk = (mdAst): never[] => {
     if (index === mdAst.length - 1) {
       const chunkData = mdAst.slice(chunkStart, index);
       interfaceGather.push(extractUseTables(
-        ['detail', 'explain'],
+        findTableNames,
         chunkData
       ) as never);
     }

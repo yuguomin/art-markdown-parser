@@ -8,7 +8,6 @@ const ast = recast.parse(source, {
 });
 
 let node;
-var cache = [];
 recast.visit(ast, {
   visitExportNamedDeclaration: function(this, nodePath) {
     if (!nodePath.node.declaration) { return this.traverse(nodePath) }
@@ -30,7 +29,8 @@ recast.visit(ast, {
   }
 });
 // TODO: 因为在循环中赋值了最后一项导致解析也只是第一项 做个记录先
-console.log(JSON.stringify(node.value.declaration.body.body[2].parameters));
+console.log(JSON.stringify(node.value.declaration.body.body[0].type));
+// console.log((node.value.declaration.body.body[0]));
 // console.log(JSON.stringify(ast));
 // console.log(recast.print(node).code);
 

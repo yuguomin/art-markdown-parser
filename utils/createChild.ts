@@ -7,7 +7,6 @@ import { createInterfaceBody } from './createBody';
  * 当需要创建的时候可以把其他父节点为其值的创建body
  */
 export const createChildrenInterface = (childrenBody, parentName, finalName, prefixName) => {
-  // prefixName = prefixName + firstWordUpperCase(parentName.replace(/\./g,'));
   prefixName = prefixName + toHump(firstWordUpperCase(parentName), '.');
   appendInterfaceTofile(parentName, createInterfaceBody(childrenBody, parentName, prefixName), finalName)
 }

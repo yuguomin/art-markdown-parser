@@ -1,7 +1,7 @@
 import recast from 'recast';
 import { objDeepCopy } from '../utils/tools';
 import { appendFileSync } from 'fs';
-import ExportInterfaceAst from '../ast/TSExample/exportInterfaceAst';
+import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 
 interface interfaceAstReuslt {
   type: string;

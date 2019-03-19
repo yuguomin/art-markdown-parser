@@ -1,5 +1,5 @@
 import { flattenArray, toHump } from './tools';
-import isCutOut from '../art.config';
+import isCutOut from '../art.config.js';
 
 // 生成最终的一个interface名字
 export const createInterfaceName = (detailTable: any) => {
