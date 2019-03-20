@@ -9,10 +9,8 @@ interface interfaceAstReuslt {
 }
 export const appendInterfaceTofile = (interfaceName, interfaceBody, interfaceAst?: any, finalName?: string) => {
   const ast = interfaceAst || objDeepCopy(ExportInterfaceAst) as any;
-  console.log(ast)
   ast.id.name = finalName || interfaceName;
   ast.body.body = interfaceBody;
-  console.log(JSON.stringify(ast.id.name));
   let result:interfaceAstReuslt = {
     type: 'ExportNamedDeclaration'
   }

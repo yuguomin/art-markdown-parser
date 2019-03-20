@@ -4,9 +4,12 @@ import { createInterfaceBody } from './createBody';
 import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 
 /** 
- * 当父节点不为data && 其类型为array或者object时需要创建一个interface
- * 当需要创建的时候可以把其他父节点为其值的创建body
- */
+ * @description 生成子interface的方法, 当父节点不为data && 其类型为array或者object时需要创建一个interface
+ * @param {Array} childrenBody 子interface的body部分数组
+ * @param {} parentName 当前子interface的父级节点path
+ * @param {} finalName 最终生成interface的name
+ * @param {} prefixName 用于当重复interfaceName时需要添加的前缀
+*/
 export const createChildrenInterface = (childrenBody, parentName, finalName, prefixName) => {
   prefixName = prefixName + toHump(firstWordUpperCase(parentName), '.');
   const ast = objDeepCopy(ExportInterfaceAst) as any;

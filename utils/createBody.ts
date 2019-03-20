@@ -5,8 +5,13 @@ import { getTypeAnnotation } from './getAnnotation';
 import { createChildrenInterface } from './createChild';
 import { isRepeatName } from './createName';
 
-// 生成interface的body部分
-export const createInterfaceBody = (explainTable: any, currentParent, prefixName?: any) => {
+/** 
+ * @description 生成interface的body部分
+ * @param {Array} explainTable api的explain表格块
+ * @param {String} currentParent 当前interface的父级元素
+ * @param {} prefixName 生成子interface时判断有重名时添加的前缀
+*/
+export const createInterfaceBody = (explainTable: any, currentParent: string, prefixName?: any) => {
   // 获取对应的参数名，类型，说明，parents, 示例的index
   const [
     nameIndex,
