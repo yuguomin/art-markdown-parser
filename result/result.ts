@@ -2,12 +2,17 @@
 export interface IHomeService {
     doublexxxDetail(reward_id: number, money: string): Promise<AjaxResult<IDoublexxxDetail>>;
 }
-export enum chance {
+export enum Chance {
     large = 1,
     middle = 2,
     small = 3
 }
-export enum rew_name {
+export enum RewardsChance {
+    xx = 1,
+    xxx = 2,
+    xxxx = 3
+}
+export enum RewName {
     man = "ha",
     wonman = "hs"
 }
@@ -19,6 +24,7 @@ export interface IRew {
     third: IThird;
 }
 export interface IRewards {
+    chance: number;
     tel: string;
     rew: IRew;
 }

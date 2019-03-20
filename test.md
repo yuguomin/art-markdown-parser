@@ -19,6 +19,7 @@
 | rest_amount     | int     | 剩余足够抽奖的金额(分) | data    | 100000 |  |
 | my_reward_count | int     | 已经获取过的奖励数量   | data    | 14 |  |
 | rewards         | array   | 随机抽奖数据          | data    | |  |
+| chance          | int     | 剩余抽奖机会          | data.rewards   | 0 | xx:1, xxx:2, xxxx:3 |
 | tel          | string  | 手机号               | data.rewards | 185xxxx6523 |  |
 | rew    | object  | 奖励名称             | data.rewards | 111积分 |  |
 | rew_name | string | 奖品 | data.rewards.rew | ansj | man:ha, wonman:hs |
