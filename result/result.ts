@@ -1,6 +1,11 @@
 
+export enum RewardId {
+    large = 1,
+    middle = 2,
+    small = 3
+}
 export interface IHomeService {
-    doublexxxDetail(reward_id: number, money: string): Promise<AjaxResult<IDoublexxxDetail>>;
+    doublexxxDetail(reward_id: RewardId, money: string): Promise<AjaxResult<IDoublexxxDetail>>;
 }
 export enum Chance {
     large = 1,

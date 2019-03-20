@@ -7,10 +7,10 @@
 | request-url | /activity/doublexxx/detail |
 
 #### params
-| 参数名    | 类型  | 说明     | 示例 |
-| --------- | ----- | -------- | ---- |
-| reward_id | int | 奖励的id | 111  |
-| money | string | 奖励的金额 | 111  |
+| 参数名    | 类型  | 说明     | 示例 | 值选项 |
+| --------- | ----- | -------- | ---- | --- |
+| reward_id | int | 奖励的id | 111  | large:1, middle:2, small:3 |
+| money | string | 奖励的金额 | 111  |  |
 
 #### explain
 | 参数名           | 类型      | 说明                 | parents | 示例  | 值选项 |

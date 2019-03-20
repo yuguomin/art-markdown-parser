@@ -20,7 +20,11 @@ const interfacePromiseAst = {
             typeAnnotation: {
               type: 'TSTypeAnnotation',
               typeAnnotation: {
-                type: '' // every params annotation
+                type: '', // every params annotation
+                typeName: {
+                  type: "Identifier",
+                  name: "" // enum name
+                }
               }
             }
           }

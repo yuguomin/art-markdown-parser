@@ -43,7 +43,6 @@ export const createInterfaceBody = (explainTable: any, currentParent: string, pr
         option: value[enumIndex]
       }
       createEnum(enumValue, prefixName, enumName => {
-        console.log((<any>result[result.length - 1]).typeAnnotation.typeAnnotation.type);
         (<any>result[result.length - 1]).typeAnnotation.typeAnnotation.type = 'TSTypeReference';
         (<any>result[result.length - 1]).typeAnnotation.typeAnnotation.typeName.name = enumName;
       });
