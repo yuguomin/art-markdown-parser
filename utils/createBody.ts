@@ -4,12 +4,14 @@ import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 import { getTypeAnnotation } from './getAnnotation';
 import { createChildrenInterface } from './createChild';
 import { isRepeatName } from './createName';
+import { createEnum } from './createEnum';
+import { singleEnumAst } from 'ast/typeAnnotationsMap';
 
 /** 
  * @description 生成interface的body部分
  * @param {Array} explainTable api的explain表格块
  * @param {String} currentParent 当前interface的父级元素
- * @param {} prefixName 生成子interface时判断有重名时添加的前缀
+ * @param {String} prefixName 生成子interface时判断有重名时添加的前缀
 */
 export const createInterfaceBody = (explainTable: any, currentParent: string, prefixName?: any) => {
   // 获取对应的参数名，类型，说明，parents, 示例的index
@@ -17,8 +19,9 @@ export const createInterfaceBody = (explainTable: any, currentParent: string, pr
     nameIndex,
     typeIndex,
     parentsIndex,
+    enumIndex
   ] = findAllIndex(
-    ['参数名', '类型', 'parents'],
+    ['参数名', '类型', 'parents', '值选项'],
     explainTable.header
   );
   const result = [];
@@ -26,6 +29,15 @@ export const createInterfaceBody = (explainTable: any, currentParent: string, pr
     const bodyTemplate = objDeepCopy(
       ExportInterfaceAst.body.body[0]
       ) as any;
+    if (value[parentsIndex] === currentParent && value[enumIndex]) {
+      const enumValue: singleEnumAst = {
+        currentName: value[nameIndex],
+        prefixName: prefixName,
+        type: value[typeIndex],
+        option: value[enumIndex]
+      }
+      createEnum(enumValue, prefixName);
+    }
     if (value[parentsIndex] === currentParent) {
       bodyTemplate.key.name = value[nameIndex];
       // bodyTemplate.typeAnnotation.typeAnnotation.type = TypeAnnotations[value[typeIndex]];

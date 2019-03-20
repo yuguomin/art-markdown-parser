@@ -2,7 +2,7 @@ import { firstWordUpperCase, findAllIndex, objDeepCopy, firstWordLowerCase } fro
 import tplAst from '../ast/TSExample/interfacePromiseAst';
 import { createInterfaceName } from "./createName";
 import { TypeAnnotations } from "../ast/typeAnnotationsMap";
-import { appendInterfaceTofile } from "./appendFile";
+import { appendInterfaceToFile } from "./appendFile";
 
 const moduleName = 'home';
 
@@ -21,7 +21,7 @@ export const createPromiseTpl = (interfaceGather) => {
     singleBody.typeAnnotation.typeAnnotation.typeParameters.params[0].typeParameters.params[0].typeName.name = everyInterfaceName;
     tplBody.push(singleBody as never); // 相当于添加每一个接口的promise
   });
-  appendInterfaceTofile(tplName, tplBody, tplAst);
+  appendInterfaceToFile(tplName, tplBody, tplAst);
 }
 
 /** 

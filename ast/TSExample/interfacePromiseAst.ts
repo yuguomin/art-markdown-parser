@@ -1,4 +1,4 @@
-const interfaceAst = {
+const interfacePromiseAst = {
   type: "TSInterfaceDeclaration",
   id: {
     type: "Identifier",
@@ -63,4 +63,5 @@ const interfaceAst = {
     ]
   }
 };
-export default interfaceAst;
+
+export default interfacePromiseAst;

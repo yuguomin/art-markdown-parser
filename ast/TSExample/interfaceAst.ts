@@ -1,4 +1,4 @@
-const ExportInterfaceAst = {
+const interfaceAst = {
   type: "TSInterfaceDeclaration",
   id: {
     type: "Identifier",
@@ -34,4 +34,4 @@ const ExportInterfaceAst = {
     ]
   }
 };
-export default ExportInterfaceAst;
+export default interfaceAst;

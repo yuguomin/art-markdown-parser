@@ -1,5 +1,7 @@
-export interface IInvestTemplate {
-  investIndex(token: string): Promise<AjaxResult<IInvestIndex>>;
-  getReward(): Promise<AjaxResult<IGetReward>>;
-  getInfo(token: string, reward_id: number): Promise<AjaxResult<IGetInfo>>;
+// export interface IInvestTemplate {
+//   investIndex: 1 | 2;
+// }
+export enum aaa {
+  b = '1',
+  c = '2'
 }

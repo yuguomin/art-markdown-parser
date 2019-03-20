@@ -1,5 +1,5 @@
 import { firstWordUpperCase, toHump, objDeepCopy } from './tools';
-import { appendInterfaceTofile } from './appendFile';
+import { appendInterfaceToFile } from './appendFile';
 import { createInterfaceBody } from './createBody';
 import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 
@@ -13,5 +13,5 @@ import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 export const createChildrenInterface = (childrenBody, parentName, finalName, prefixName) => {
   prefixName = prefixName + toHump(firstWordUpperCase(parentName), '.');
   const ast = objDeepCopy(ExportInterfaceAst) as any;
-  appendInterfaceTofile(parentName, createInterfaceBody(childrenBody, parentName, prefixName), ast, finalName);
+  appendInterfaceToFile(parentName, createInterfaceBody(childrenBody, parentName, prefixName), ast, finalName);
 }

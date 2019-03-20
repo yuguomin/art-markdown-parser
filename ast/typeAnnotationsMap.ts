@@ -13,4 +13,22 @@ export enum TypeAnnotations {
 /** 
  * 定义了数据格式中的最高父级
 */
-export const highestParent = 'data';
+export const HIGHESTPARENT = 'data';
+
+/** 
+ * 定义了enum的value值对应的类型
+*/
+export enum EnumTypeAnnotations {
+  int = "NumericLiteral",
+  string = "StringLiteral"
+}
+
+/** 
+ * enum每条生成所需内容定义
+*/
+export interface singleEnumAst {
+  currentName: string;
+  prefixName: string;
+  type: string;
+  option: string;
+}
