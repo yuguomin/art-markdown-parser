@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-const source = readFileSync('./interface.ts', 'UTF8');
+const source = readFileSync('./test/interface.ts', 'UTF8');
 
 import recast from 'recast';
 const tsParser = require("recast/parsers/typescript")

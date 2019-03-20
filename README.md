@@ -24,4 +24,4 @@ ts-node index.ts
 
 sourceParser.ts
 paser interface.ts to tsAst and observe structure
-command: ts-node sourceParser.ts
+command: ts-node ./test/sourceParser.ts
