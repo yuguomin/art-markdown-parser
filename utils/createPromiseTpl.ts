@@ -1,6 +1,6 @@
 import { firstWordUpperCase, findAllIndex, objDeepCopy, firstWordLowerCase } from "./tools";
 import tplAst from '../ast/TSExample/interfacePromiseAst';
-import { createInterfaceName } from "./createName";
+import { createInterfaceName } from "./createInterfaceName";
 import { TypeAnnotations, singleEnumAst } from "../ast/typeAnnotationsMap";
 import { appendInterfaceToFile } from "./appendFile";
 import { createEnum } from "./createEnum";
