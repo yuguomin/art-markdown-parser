@@ -29,6 +29,12 @@ export const createInterfaceBody = (explainTable: any, currentParent: string, pr
     const bodyTemplate = objDeepCopy(
       ExportInterfaceAst.body.body[0]
       ) as any;
+    if (value[parentsIndex] === currentParent) {
+      bodyTemplate.key.name = value[nameIndex];
+      // bodyTemplate.typeAnnotation.typeAnnotation.type = TypeAnnotations[value[typeIndex]];
+      bodyTemplate.typeAnnotation = getTypeAnnotation(value[typeIndex], value[nameIndex]);
+      result.push(bodyTemplate as never);
+    };
     if (value[parentsIndex] === currentParent && value[enumIndex]) {
       const enumValue: singleEnumAst = {
         currentName: value[nameIndex],
@@ -36,14 +42,12 @@ export const createInterfaceBody = (explainTable: any, currentParent: string, pr
         type: value[typeIndex],
         option: value[enumIndex]
       }
-      createEnum(enumValue, prefixName);
+      createEnum(enumValue, prefixName, enumName => {
+        console.log((<any>result[result.length - 1]).typeAnnotation.typeAnnotation.type);
+        (<any>result[result.length - 1]).typeAnnotation.typeAnnotation.type = 'TSTypeReference';
+        (<any>result[result.length - 1]).typeAnnotation.typeAnnotation.typeName.name = enumName;
+      });
     }
-    if (value[parentsIndex] === currentParent) {
-      bodyTemplate.key.name = value[nameIndex];
-      // bodyTemplate.typeAnnotation.typeAnnotation.type = TypeAnnotations[value[typeIndex]];
-      bodyTemplate.typeAnnotation = getTypeAnnotation(value[typeIndex], value[nameIndex]);
-      result.push(bodyTemplate as never);
-    };
     if (value[parentsIndex] === currentParent && ['array', 'object'].includes(value[typeIndex])) {
       const childrenChunk = {} as any;
       const formatName = firstWordUpperCase(value[nameIndex]);
@@ -70,7 +74,6 @@ export const createInterfaceBody = (explainTable: any, currentParent: string, pr
           return cell;
         }
       });
-
       // childrenChunk.cells = explainTable.cells;
       createChildrenInterface(childrenChunk, value[parentsIndex] + '.' +  value[nameIndex], childrenName, prefixName);
     };

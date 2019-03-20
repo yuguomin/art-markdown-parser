@@ -11,7 +11,7 @@ export const enumGather = [];
  * @param {singleEnumAst} 每一个需要枚举的信息
  * @param {string} 当前选项的前置name
 */
-export const createEnum = (singleCell: singleEnumAst, prefixName?: string) => {
+export const createEnum = (singleCell: singleEnumAst, prefixName?: string, enumCreated?: (string) => void) => {
   let enumValues = singleCell.option.replace(/，/ig,',').replace(/\s*/g,"").split(',');
   const members = [];
   let enumName = firstWordUpperCase(toHump(singleCell.currentName, '_'));
@@ -27,6 +27,6 @@ export const createEnum = (singleCell: singleEnumAst, prefixName?: string) => {
     singleMember.initializer.value = value.split(':')[1];
     members.push(singleMember as never);
   })
+  enumCreated && enumCreated(enumName);
   appendEnumToFile(enumName, members);
-  // TODO: enum生成出来了 但是enum的name结构需要优化，并且对应interface的值还要作用起来
 }

@@ -1,7 +1,3 @@
 // export interface IInvestTemplate {
-//   investIndex: 1 | 2;
+//   investIndex: xxx;
 // }
-export enum aaa {
-  b = '1',
-  c = '2'
-}

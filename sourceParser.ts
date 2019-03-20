@@ -30,7 +30,7 @@ recast.visit(ast, {
 });
 // TODO: 因为在循环中赋值了最后一项导致解析也只是第一项 做个记录先
 // console.log(node.value);
-console.log(node.value.declaration.members[0]); // 枚举的key对应的value
+console.log(JSON.stringify(node.value.declaration.body.body[0])); // 枚举的key对应的value
 
 // node.value.declaration.id.name = 'ygm'
 // console.log((node.value.declaration.body.body[0]));

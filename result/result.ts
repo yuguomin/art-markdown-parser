@@ -20,11 +20,11 @@ export interface IThird {
     fourth: boolean;
 }
 export interface IRew {
-    rew_name: string;
+    rew_name: RewName;
     third: IThird;
 }
 export interface IRewards {
-    chance: number;
+    chance: RewardsChance;
     tel: string;
     rew: IRew;
 }
@@ -35,7 +35,7 @@ export interface IList {
     rewards: IDoublexxxDetailDataListRewards;
 }
 export interface IDoublexxxDetail {
-    chance: number;
+    chance: Chance;
     rest_amount: number;
     my_reward_count: number;
     rewards: IRewards[];
