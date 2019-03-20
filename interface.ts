@@ -1,3 +1,5 @@
-// export interface IInvestTemplate {
-//   investIndex: xxx;
-// }
+export interface AjaxResult<T> {
+  code: number;
+  message: string;
+  data: T;
+}

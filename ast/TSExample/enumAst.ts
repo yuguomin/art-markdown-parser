@@ -21,6 +21,5 @@ const enumAst = {
     ]
   }
 };
-//NumericLiteral
-//StringLiteral
+
 export default enumAst;
