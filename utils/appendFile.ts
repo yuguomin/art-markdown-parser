@@ -34,6 +34,11 @@ export const appendInterfaceToFile = (interfaceName, interfaceBody, interfaceAst
   );
 }
 
+/** 
+ * @description 将enum添加到文件中
+ * @param {String} enum的name
+ * @param {Array} enum中的body部分
+*/
 export const appendEnumToFile = (enumName: string, enumBody) => {
   const ast = enumAst;
   ast.declaration.id.name = enumName;
