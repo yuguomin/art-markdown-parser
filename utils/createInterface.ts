@@ -1,6 +1,6 @@
 import { extractAllInterfaceChunk } from './extractData';
-import { createInterfaceName } from './createName';
-import { createInterfaceBody } from './createBody';
+import { createInterfaceName } from './createInterfaceName';
+import { createInterfaceBody } from './createInterfaceBody';
 import { HIGHESTPARENT } from '../ast/typeAnnotationsMap';
 import { appendInterfaceToFile } from './appendFile';
 import { createPromiseTpl } from './createPromiseTpl';

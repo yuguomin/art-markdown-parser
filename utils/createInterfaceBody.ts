@@ -2,8 +2,8 @@
 import { findAllIndex, firstWordUpperCase, objDeepCopy } from './tools';
 import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 import { getTypeAnnotation } from './getAnnotation';
-import { createChildrenInterface } from './createChild';
-import { isRepeatName } from './createName';
+import { createChildrenInterface } from './createInterfaceChild';
+import { isRepeatName } from './createInterfaceName';
 import { createEnum } from './createEnum';
 import { singleEnumAst } from 'ast/typeAnnotationsMap';
 
