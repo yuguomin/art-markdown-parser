@@ -15,7 +15,7 @@ export const createPromiseTpl = (interfaceGather) => {
   const tplName = `I${firstWordUpperCase(moduleName)}Service`;
   const tplBody = [];
   interfaceGather.forEach(value => {
-    const singleBody = objDeepCopy(tplAst.body.body[0]) as any;
+    const singleBody = objDeepCopy(tplAst.declaration.body.body[0]) as any;
     const everyInterfaceName = createInterfaceName((<any>value).detail);
     singleBody.key.name = firstWordLowerCase(everyInterfaceName.slice(1)); // every key name
     singleBody.parameters = createParameters(value.params, firstWordUpperCase(singleBody.key.name)); // every key params
@@ -34,7 +34,7 @@ export const createParameters = (paramsTable, prefixName: string) => {
   const parameters = [];
   const [nameIndex, typeIndex, enumIndex] = findAllIndex(['参数名', '类型', '值选项'], paramsTable.header);
   paramsTable.cells.forEach(value => {
-    const singleParam = objDeepCopy(tplAst.body.body[0].parameters[0]) as any;
+    const singleParam = objDeepCopy(tplAst.declaration.body.body[0].parameters[0]) as any;
     singleParam.name = value[nameIndex];
     singleParam.typeAnnotation.typeAnnotation.type = TypeAnnotations[value[typeIndex]];
     if (value[enumIndex]) {

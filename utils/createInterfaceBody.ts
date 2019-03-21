@@ -27,7 +27,7 @@ export const createInterfaceBody = (explainTable: any, currentParent: string, pr
   const result = [];
   explainTable.cells.forEach(value => {
     const bodyTemplate = objDeepCopy(
-      ExportInterfaceAst.body.body[0]
+      ExportInterfaceAst.declaration.body.body[0]
       ) as any;
     if (value[parentsIndex] === currentParent) {
       bodyTemplate.key.name = value[nameIndex];
