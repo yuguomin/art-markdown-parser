@@ -9,7 +9,7 @@ import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
  * @returns 每次key对应的typeAnnotation节点
 */
 export const getTypeAnnotation = (type: string, childrenInterfaceName: string) => {
-  const anntationTpl = objDeepCopy(ExportInterfaceAst.body.body[0].typeAnnotation) as any;
+  const anntationTpl = objDeepCopy(ExportInterfaceAst.declaration.body.body[0].typeAnnotation) as any;
   anntationTpl.typeAnnotation.type = TypeAnnotations[type];
   if (type === 'array') {
     anntationTpl.typeAnnotation.elementType.typeName.name = childrenInterfaceName;

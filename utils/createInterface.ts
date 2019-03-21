@@ -1,6 +1,6 @@
 import { extractAllInterfaceChunk } from './extractData';
-import { createInterfaceName } from './createName';
-import { createInterfaceBody } from './createBody';
+import { createInterfaceName } from './createInterfaceName';
+import { createInterfaceBody } from './createInterfaceBody';
 import { HIGHESTPARENT } from '../ast/typeAnnotationsMap';
 import { appendInterfaceToFile } from './appendFile';
 import { createPromiseTpl } from './createPromiseTpl';
@@ -12,11 +12,11 @@ import { readyCreate } from './readyCreate';
 */
 const createInterface = (tokens) => {
   readyCreate();
-  const interfaceGather = extractAllInterfaceChunk(tokens, ['detail', 'explain']) as any;
   createPromiseTpl(extractAllInterfaceChunk(tokens, ['detail', 'params']));
+  const interfaceGather = extractAllInterfaceChunk(tokens, ['detail', 'explain']) as any;
   interfaceGather.forEach(value => {
     const interfaceName = createInterfaceName((<any>value).detail);
-    const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT, interfaceName);
+    const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT);
     appendInterfaceToFile(interfaceName, interfaceBody);
   });
 };

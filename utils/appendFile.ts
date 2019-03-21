@@ -5,14 +5,6 @@ import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 import enumAst from '../ast/TSExample/enumAst';
 
 /** 
- * @description 每个export interface的基本结构
-*/
-interface interfaceAstReuslt {
-  type: string;
-  declaration?: any;
-}
-
-/** 
  * @description 将最终生成的interface写入到文件
  * @param {String} interfaceName 当前interfaceName
  * @param {Array} interfaceBody 由于重复需要设置上的最终Name
@@ -21,19 +13,20 @@ interface interfaceAstReuslt {
 */
 export const appendInterfaceToFile = (interfaceName, interfaceBody, interfaceAst?: any, finalName?: string) => {
   const ast = interfaceAst || objDeepCopy(ExportInterfaceAst) as any;
-  ast.id.name = finalName || interfaceName;
-  ast.body.body = interfaceBody;
-  let result:interfaceAstReuslt = {
-    type: 'ExportNamedDeclaration'
-  }
-  result.declaration = ast
+  ast.declaration.id.name = finalName || interfaceName;
+  ast.declaration.body.body = interfaceBody;
   appendFileSync(
     './result/result.ts',
-    `\n${recast.print(result).code}`,
+    `\n${recast.print(ast).code}`,
     'utf8'
   );
 }
 
+/** 
+ * @description 将enum添加到文件中
+ * @param {String} enum的name
+ * @param {Array} enum中的body部分
+*/
 export const appendEnumToFile = (enumName: string, enumBody) => {
   const ast = enumAst;
   ast.declaration.id.name = enumName;

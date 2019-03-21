@@ -13,9 +13,9 @@ ok
 
 yarn install
 
-your markdown file /test.md
+your markdown file ./test/test.md
 
-your generate file /result/result.ts
+your generate file ./result/result.ts
 
 generate command
 ts-node index.ts
@@ -24,4 +24,4 @@ ts-node index.ts
 
 sourceParser.ts
 paser interface.ts to tsAst and observe structure
-command: ts-node sourceParser.ts
+command: ts-node ./test/sourceParser.ts

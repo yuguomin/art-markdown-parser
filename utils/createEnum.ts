@@ -1,7 +1,8 @@
 import enumAst from '../ast/TSExample/enumAst';
-import { singleEnumAst, EnumTypeAnnotations, HIGHESTPARENT } from '../ast/typeAnnotationsMap';
+import { singleEnumAst, EnumTypeAnnotations } from '../ast/typeAnnotationsMap';
 import { objDeepCopy, toHump, firstWordUpperCase } from './tools';
 import { appendEnumToFile } from './appendFile';
+import { checkRepeatName } from './nameSpaceControl';
 
 
 export const enumGather = [];
@@ -11,15 +12,11 @@ export const enumGather = [];
  * @param {singleEnumAst} 每一个需要枚举的信息
  * @param {string} 当前选项的前置name
 */
-export const createEnum = (singleCell: singleEnumAst, prefixName?: string, enumCreated?: (string) => void) => {
+export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: string) => void) => {
   let enumValues = singleCell.option.replace(/，/ig,',').replace(/\s*/g,"").split(',');
   const members = [];
   let enumName = firstWordUpperCase(toHump(singleCell.currentName, '_'));
-  if (enumGather.includes(enumName as never)) {
-    enumName = (prefixName + enumName).split(firstWordUpperCase(HIGHESTPARENT))[1];
-  } else {
-    enumGather.push(enumName as never);
-  }
+  enumName = checkRepeatName(enumName);
   enumValues.forEach(value => {
     const singleMember = objDeepCopy(enumAst.declaration.members[0]) as any;
     singleMember.id.name = value.split(':')[0];
