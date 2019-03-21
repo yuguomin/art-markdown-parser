@@ -12,8 +12,8 @@ import { readyCreate } from './readyCreate';
 */
 const createInterface = (tokens) => {
   readyCreate();
-  const interfaceGather = extractAllInterfaceChunk(tokens, ['detail', 'explain']) as any;
   createPromiseTpl(extractAllInterfaceChunk(tokens, ['detail', 'params']));
+  const interfaceGather = extractAllInterfaceChunk(tokens, ['detail', 'explain']) as any;
   interfaceGather.forEach(value => {
     const interfaceName = createInterfaceName((<any>value).detail);
     const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT, interfaceName);

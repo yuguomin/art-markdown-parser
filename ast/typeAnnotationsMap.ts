@@ -32,3 +32,5 @@ export interface singleEnumAst {
   type: string;
   option: string;
 }
+
+export const nameSpaceGather: any = [];
