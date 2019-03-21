@@ -9,6 +9,7 @@ export const extractAllInterfaceChunk = (mdAst, findTableNames: string[]): never
   const interfaceGather = [];
   let chunkStart = 0;
   mdAst.forEach((value, index) => {
+    // TODO add to constant
     if (value.type === 'list_start' && index) {
       const chunkData = mdAst.slice(chunkStart, index);
       interfaceGather.push(extractUseTables(
