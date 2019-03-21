@@ -28,9 +28,7 @@ export enum EnumTypeAnnotations {
 */
 export interface singleEnumAst {
   currentName: string;
-  prefixName: string;
+  // prefixName: string;
   type: string;
   option: string;
 }
-
-export const nameSpaceGather: any = [];

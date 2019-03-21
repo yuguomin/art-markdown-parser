@@ -16,7 +16,7 @@ const createInterface = (tokens) => {
   const interfaceGather = extractAllInterfaceChunk(tokens, ['detail', 'explain']) as any;
   interfaceGather.forEach(value => {
     const interfaceName = createInterfaceName((<any>value).detail);
-    const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT, interfaceName);
+    const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT);
     appendInterfaceToFile(interfaceName, interfaceBody);
   });
 };

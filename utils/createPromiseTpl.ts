@@ -18,7 +18,7 @@ export const createPromiseTpl = (interfaceGather) => {
     const singleBody = objDeepCopy(tplAst.declaration.body.body[0]) as any;
     const everyInterfaceName = createInterfaceName((<any>value).detail);
     singleBody.key.name = firstWordLowerCase(everyInterfaceName.slice(1)); // every key name
-    singleBody.parameters = createParameters(value.params, firstWordUpperCase(singleBody.key.name)); // every key params
+    singleBody.parameters = createParameters(value.params); // every key params
     singleBody.typeAnnotation.typeAnnotation.typeParameters.params[0].typeParameters.params[0].typeName.name = everyInterfaceName;
     tplBody.push(singleBody as never); // 相当于添加每一个接口的promise
   });
@@ -30,7 +30,7 @@ export const createPromiseTpl = (interfaceGather) => {
  * @param {Array} paramsTable 每一个api的params表格块
  * @returns {Array} key部分的参数数组ast
 */
-export const createParameters = (paramsTable, prefixName: string) => {
+export const createParameters = (paramsTable) => {
   const parameters = [];
   const [nameIndex, typeIndex, enumIndex] = findAllIndex(['参数名', '类型', '值选项'], paramsTable.header);
   paramsTable.cells.forEach(value => {
@@ -40,11 +40,10 @@ export const createParameters = (paramsTable, prefixName: string) => {
     if (value[enumIndex]) {
       const enumValue: singleEnumAst = {
         currentName: value[nameIndex],
-        prefixName: prefixName,
         type: value[typeIndex],
         option: value[enumIndex]
       }
-      createEnum(enumValue, prefixName, enumName => {
+      createEnum(enumValue, enumName => {
         singleParam.typeAnnotation.typeAnnotation.type = 'TSTypeReference';
         singleParam.typeAnnotation.typeAnnotation.typeName.name = enumName;
       });

@@ -14,15 +14,9 @@ export enum RewardId1 {
     middle = 2,
     small = 3
 }
-export enum RewardId2 {
-    large = 1,
-    middle = 2,
-    small = 3
-}
 export interface IHomeService {
     doublexxxDetail(reward_id: RewardId, money: string): Promise<AjaxResult<IDoublexxxDetail>>;
     doubleEleDetail(reward_id: RewardId1, money: string): Promise<AjaxResult<IDoubleEleDetail>>;
-    doubleooooDetail(reward_id: RewardId2, money: string): Promise<AjaxResult<IDoubleooooDetail>>;
 }
 export enum Chance {
     large = 1,
@@ -50,11 +44,11 @@ export interface IRewards {
     tel: string;
     rew: IRew;
 }
-export interface IDoublexxxDetailDataListRewards {
+export interface IRewards1 {
     type: number;
 }
 export interface IList {
-    rewards: IDoublexxxDetailDataListRewards;
+    rewards: IRewards1;
 }
 export interface IDoublexxxDetail {
     chance: Chance;
@@ -80,73 +74,31 @@ export enum RewName1 {
     man = "ha",
     wonman = "hs"
 }
-export interface IDoubleEleDetailDataRewardsDataRewardsRewThird {
+export interface IThird1 {
     fourth: boolean;
 }
-export interface IDoubleEleDetailDataRewardsRew {
+export interface IRew1 {
     rew_name: RewName1;
-    third: IDoubleEleDetailDataRewardsDataRewardsRewThird;
+    third: IThird1;
 }
-export interface IDoubleEleDetailRewards {
+export interface IRewards2 {
     chance: Chance3;
     tel: string;
-    rew: IDoubleEleDetailDataRewardsRew;
+    rew: IRew1;
 }
-export interface IDoubleEleDetailDataListRewards {
+export interface IRewards3 {
     type: number;
 }
-export interface IDoubleEleDetailList {
-    rewards: IDoubleEleDetailDataListRewards;
+export interface IList1 {
+    rewards: IRewards3;
 }
 export interface IDoubleEleDetail {
     chance: Chance2;
     rest_amount: number;
     my_reward_count: number;
-    rewards: IDoubleEleDetailRewards[];
+    rewards: IRewards2[];
     invest_url: string;
     is_login: boolean;
     activity_status: number;
-    list: IDoubleEleDetailList[];
-}
-export enum Chance4 {
-    large = 1,
-    middle = 2,
-    small = 3
-}
-export enum Chance5 {
-    xx = 1,
-    xxx = 2,
-    xxxx = 3
-}
-export enum RewName2 {
-    man = "ha",
-    wonman = "hs"
-}
-export interface IDoubleooooDetailDataRewardsDataRewardsRewThird {
-    fourth: boolean;
-}
-export interface IDoubleooooDetailDataRewardsRew {
-    rew_name: RewName2;
-    third: IDoubleooooDetailDataRewardsDataRewardsRewThird;
-}
-export interface IDoubleooooDetailRewards {
-    chance: Chance5;
-    tel: string;
-    rew: IDoubleooooDetailDataRewardsRew;
-}
-export interface IDoubleooooDetailDataListRewards {
-    type: number;
-}
-export interface IDoubleooooDetailList {
-    rewards: IDoubleooooDetailDataListRewards;
-}
-export interface IDoubleooooDetail {
-    chance: Chance4;
-    rest_amount: number;
-    my_reward_count: number;
-    rewards: IDoubleooooDetailRewards[];
-    invest_url: string;
-    is_login: boolean;
-    activity_status: number;
-    list: IDoubleooooDetailList[];
+    list: IList1[];
 }

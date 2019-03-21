@@ -1,5 +1,5 @@
 import enumAst from '../ast/TSExample/enumAst';
-import { singleEnumAst, EnumTypeAnnotations, HIGHESTPARENT, nameSpaceGather } from '../ast/typeAnnotationsMap';
+import { singleEnumAst, EnumTypeAnnotations } from '../ast/typeAnnotationsMap';
 import { objDeepCopy, toHump, firstWordUpperCase } from './tools';
 import { appendEnumToFile } from './appendFile';
 import { checkRepeatName } from './nameSpaceControl';
@@ -12,7 +12,7 @@ export const enumGather = [];
  * @param {singleEnumAst} 每一个需要枚举的信息
  * @param {string} 当前选项的前置name
 */
-export const createEnum = (singleCell: singleEnumAst, prefixName: string, enumCreated?: (enumName: string) => void) => {
+export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: string) => void) => {
   let enumValues = singleCell.option.replace(/，/ig,',').replace(/\s*/g,"").split(',');
   const members = [];
   let enumName = firstWordUpperCase(toHump(singleCell.currentName, '_'));
