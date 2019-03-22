@@ -6,9 +6,9 @@ import ExportInterfaceAst from '../../template/interfaceTsAstTpl';
 import { createChildrenInterface } from './createInterfaceChild';
 import { createEnum } from './createEnumTsAst';
 import { singleEnumAst, TsAstIdentifier } from '../../constant/TSAnnotationMap';
-import { getTypeAnnotation } from './getAnnotation';
+import { getTypeAnnotation } from './getTypeAnnotation';
 import { checkRepeatName } from './nameSpaceControl';
-import { ExplainTableHeader } from '../../constant/MarkDown';
+import { ExplainTableHeader, ParamType, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
 
 /** 
  * @description 生成interface的body部分
@@ -49,23 +49,23 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
         lastTypeAnnotation.typeName.name = enumName;
       });
     }
-    if (value[parentsIndex] === currentParent && ['array', 'object'].includes(value[typeIndex])) {
+    if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(value[typeIndex])) {
       const childrenChunk = {} as any;
       const formatName = firstWordUpperCase(value[nameIndex]);
-      let childrenName = `I${formatName}`;
-      if (value[typeIndex] === 'array') {
-        lastTypeAnnotation.elementType.typeName.name = childrenName = checkRepeatName('I' + formatName);
+      let childrenName = `${INTERFACENAMEPREFIX}${formatName}`;
+      if (value[typeIndex] === ParamType.array) {
+        lastTypeAnnotation.elementType.typeName.name = childrenName = checkRepeatName(INTERFACENAMEPREFIX + formatName);
         childrenChunk.header = explainTable.header;
       }
-      if (value[typeIndex] === 'object') {
-        lastTypeAnnotation.typeName.name = childrenName = checkRepeatName('I' + formatName);
+      if (value[typeIndex] === ParamType.object) {
+        lastTypeAnnotation.typeName.name = childrenName = checkRepeatName(INTERFACENAMEPREFIX + formatName);
         childrenChunk.header = explainTable.header;
       }
       // 这里三级嵌套没有生成的原因主要是因为二级的table已经只包含父级为子interface的，再在其中找就没了
       let childrenNameGather = [value[nameIndex]];
       childrenChunk.cells = explainTable.cells.filter(cell => {
         // 这里先找到符合该项的每一个子集，如果子集是对象，再把该对象子集找到
-        if (['array', 'object'].includes(cell[typeIndex])) {
+        if ([ParamType.array, ParamType.object].includes(cell[typeIndex])) {
           childrenNameGather.push(cell[parentsIndex] + '.' + cell[nameIndex]);
         }
         if (childrenNameGather.includes(cell[parentsIndex])) {

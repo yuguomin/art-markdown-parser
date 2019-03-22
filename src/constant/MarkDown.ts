@@ -33,7 +33,20 @@ export namespace MarkDownIdentifier {
   export const tableIdentifier = 'table';
 }
 
+export namespace ParamType {
+  export const number = 'int';
+  export const string = 'string';
+  export const boolean = 'boolean';
+  export const array = 'array';
+  export const object = 'object';
+}
+
+
 /** 
  * 定义了数据格式中的最高父级
 */
 export const HIGHESTPARENT = 'data';
+
+export const RESPONSENAMESUFFIX = 'Service';
+
+export const INTERFACENAMEPREFIX = 'I';
