@@ -1,5 +1,5 @@
 // import AjaxAst from "src/template/ajaxResultAst";
-import { MarkDown } from "constant/MarkDown";
+import { MarkDownHeaders } from "../../constant/MarkDown";
 import { extractMdAstChunk } from "./extractMdAstChunk";
 
 export interface transformData {
@@ -13,8 +13,8 @@ export interface transformData {
 export const extractNeedTransformData = (mdAST) => {
   // const baseResponseDataStructure = AjaxAst;
   const transformData: transformData = {
-    mdAstPromisePart: extractMdAstChunk(mdAST, [MarkDown.DETAIL, MarkDown.PARAMS]),
-    mdAstInterfacePart: extractMdAstChunk(mdAST, [MarkDown.DETAIL, MarkDown.EXPLAIN])
+    mdAstPromisePart: extractMdAstChunk(mdAST, [MarkDownHeaders.DETAIL, MarkDownHeaders.PARAMS]),
+    mdAstInterfacePart: extractMdAstChunk(mdAST, [MarkDownHeaders.DETAIL, MarkDownHeaders.EXPLAIN])
   };
   return transformData;
 }

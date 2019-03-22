@@ -1,3 +1,4 @@
+import { MarkDownIdentifier } from "../../constant/MarkDown";
 
 /** 
  * @description 按照一个api取抽取每一个数据
@@ -9,15 +10,14 @@ export const extractMdAstChunk = (mdAst, findTableNames: string[]): never[] => {
   const interfaceGather = [];
   let chunkStart = 0;
   mdAst.forEach((value, index) => {
-    // TODO add to constant
-    if (value.type === 'list_start' && index) {
+    if (value.type === MarkDownIdentifier.singleInterfaceStart && index) {
       const chunkData = mdAst.slice(chunkStart, index);
       interfaceGather.push(extractUseTables(
         findTableNames,
         chunkData
       ) as never);
     }
-    if (value.type === 'list_start') {
+    if (value.type === MarkDownIdentifier.singleInterfaceStart) {
       chunkStart = index;
     }
     if (index === mdAst.length - 1) {
@@ -55,13 +55,13 @@ export const extractChooseTable = (tableText: string, chunkData: any[]) => {
   chunkData.forEach((value, index) => {
     // confirm right table chunk
     if (
-      value.type === 'heading' &&
+      value.type === MarkDownIdentifier.headerIdentifier &&
       value.depth === 4 &&
       value.text === tableText
     ) {
       result =
         chunkData.find((tableValue, tableIndex) => {
-          if (tableIndex > index && tableValue.type === 'table') {
+          if (tableIndex > index && tableValue.type === MarkDownIdentifier.tableIdentifier) {
             return tableValue;
           }
         }) || {};

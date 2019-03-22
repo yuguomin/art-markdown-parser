@@ -1,7 +1,7 @@
-import { firstWordUpperCase, toHump, objDeepCopy } from './tools';
-import { appendInterfaceToFile } from './appendFile';
+import { objDeepCopy } from '../../utils/objDeepCopy';
 import { createInterfaceBody } from './createInterfaceBody';
-import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
+import ExportInterfaceAst from '../../template/interfaceAst';
+import { collateInterfaceAst } from './integrateTsAst';
 
 /** 
  * @description 生成子interface的方法, 当父节点不为data && 其类型为array或者object时需要创建一个interface
@@ -11,5 +11,5 @@ import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
 */
 export const createChildrenInterface = (childrenBody, parentName, finalName) => {
   const ast = objDeepCopy(ExportInterfaceAst) as any;
-  appendInterfaceToFile(parentName, createInterfaceBody(childrenBody, parentName), ast, finalName);
+  collateInterfaceAst(parentName, createInterfaceBody(childrenBody, parentName), ast, finalName);
 }

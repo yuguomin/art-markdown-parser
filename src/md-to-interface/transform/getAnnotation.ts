@@ -1,6 +1,6 @@
-import { objDeepCopy } from './tools';
-import { TypeAnnotations } from '../ast/typeAnnotationsMap';
-import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
+import { objDeepCopy } from '../../utils/objDeepCopy';
+import { TypeAnnotations } from '../../constant/TSAnnotationMap';
+import ExportInterfaceAst from '../../template/interfaceAst';
 
 /** 
  * @description 映射参数的类型和ts的类型

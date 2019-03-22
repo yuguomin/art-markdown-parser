@@ -1,5 +1,7 @@
-import { flattenArray, toHump } from './tools';
-import isCutOut from '../art.config.js';
+import { flattenArray } from '../../utils/flattenArray';
+import { toHump } from '../../utils/toHump';
+import isCutOut from '../../../art.config.js';
+import { DetailTableMembers } from '../../constant/MarkDown';
 
 /** 
  * @description 生成最终的一个interface名字
@@ -10,7 +12,7 @@ export const createInterfaceName = (detailTable: any) => {
   let urlStr: string = '';
   const tableCells = flattenArray(detailTable.cells);
   tableCells.find((value, index) => {
-    if (value === 'request-url') {
+    if (value === DetailTableMembers.requestUrl) {
       urlStr = tableCells[index + 1];
     }
   });

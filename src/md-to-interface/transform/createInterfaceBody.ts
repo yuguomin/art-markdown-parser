@@ -1,11 +1,14 @@
 
-import { findAllIndex, firstWordUpperCase, objDeepCopy } from './tools';
-import ExportInterfaceAst from '../ast/TSExample/interfaceAst';
-import { getTypeAnnotation } from './getAnnotation';
+import { objDeepCopy } from '../../utils/objDeepCopy';
+import { findAllIndex } from '../../utils/findAllIndex';
+import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
+import ExportInterfaceAst from '../../template/interfaceAst';
 import { createChildrenInterface } from './createInterfaceChild';
-import { createEnum } from './createEnum';
-import { singleEnumAst } from 'ast/typeAnnotationsMap';
+import { createEnum } from './createEnumTsAst';
+import { singleEnumAst, TsAstIdentifier } from '../../constant/TSAnnotationMap';
+import { getTypeAnnotation } from './getAnnotation';
 import { checkRepeatName } from './nameSpaceControl';
+import { ExplainTableHeader } from '../../constant/MarkDown';
 
 /** 
  * @description 生成interface的body部分
@@ -20,7 +23,7 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     parentsIndex,
     enumIndex
   ] = findAllIndex(
-    ['参数名', '类型', 'parents', '值选项'],
+    [ExplainTableHeader.paramsName, ExplainTableHeader.type, ExplainTableHeader.parents, ExplainTableHeader.valueOptions],
     explainTable.header
   );
   const result = [];
@@ -42,7 +45,7 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
         option: value[enumIndex]
       }
       createEnum(enumValue, enumName => {
-        lastTypeAnnotation.type = 'TSTypeReference';
+        lastTypeAnnotation.type = TsAstIdentifier.annotationType;
         lastTypeAnnotation.typeName.name = enumName;
       });
     }

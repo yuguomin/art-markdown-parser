@@ -1,4 +1,3 @@
-
 /** 
  * 对应markdown的explain的type映射到interface body的type定义
 */
@@ -9,11 +8,6 @@ export enum TypeAnnotations {
   array = "TSArrayType",
   object = "TSTypeReference"
 }
-
-/** 
- * 定义了数据格式中的最高父级
-*/
-export const HIGHESTPARENT = 'data';
 
 /** 
  * 定义了enum的value值对应的类型
@@ -28,7 +22,10 @@ export enum EnumTypeAnnotations {
 */
 export interface singleEnumAst {
   currentName: string;
-  // prefixName: string;
   type: string;
   option: string;
+}
+
+export namespace TsAstIdentifier {
+  export const annotationType = 'TSTypeReference';
 }

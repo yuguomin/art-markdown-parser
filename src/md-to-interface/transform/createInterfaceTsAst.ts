@@ -1,5 +1,7 @@
-import { createInterfaceName } from "utils/createInterfaceName";
-import { createInterfaceBody } from "utils/createInterfaceBody";
+import { createInterfaceName } from "./createInterfaceName";
+import { createInterfaceBody } from "./createInterfaceBody";
+import { collateInterfaceAst } from "./integrateTsAst";
+import { HIGHESTPARENT } from "../../constant/MarkDown";
 
 
 /** 
@@ -8,7 +10,7 @@ import { createInterfaceBody } from "utils/createInterfaceBody";
 export const createInterfaceTsAst = (interfaceGather: any) => {
   interfaceGather.forEach(value => {
     const interfaceName = createInterfaceName((<any>value).detail);
-    const interfaceBody = createInterfaceBody((<any>value).explain, 'data');
-    // appendInterfaceToFile(interfaceName, interfaceBody);
+    const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT);
+    collateInterfaceAst(interfaceName, interfaceBody);
   });
 };

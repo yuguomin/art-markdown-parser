@@ -1,10 +1,10 @@
 import enumAst from '../../template/enumAst';
-import { singleEnumAst, EnumTypeAnnotations } from '../../template/typeAnnotationsMap';
-import { objDeepCopy, toHump, firstWordUpperCase } from "../../../utils/tools";
-import { checkRepeatName } from 'utils/nameSpaceControl';
-
-
-export const enumGather = [];
+import { singleEnumAst, EnumTypeAnnotations } from '../../constant/TSAnnotationMap';
+import { objDeepCopy } from '../../utils/objDeepCopy';
+import { toHump } from '../../utils/toHump';
+import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
+import { checkRepeatName } from './nameSpaceControl';
+import { collateEnumAst } from './integrateTsAst';
 
 /** 
  * @description 生成一个枚举类型用于标示特定的参数类型
@@ -24,5 +24,5 @@ export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: s
     members.push(singleMember as never);
   })
   enumCreated && enumCreated(enumName);
-  // appendEnumToFile(enumName, members);
+  collateEnumAst(enumName, members);
 }

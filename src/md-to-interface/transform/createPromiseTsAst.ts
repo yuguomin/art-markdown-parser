@@ -1,9 +1,12 @@
-import { firstWordUpperCase, findAllIndex, objDeepCopy, firstWordLowerCase } from "../../../utils/tools";
+import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
+import { findAllIndex } from '../../utils/findAllIndex';
+import { objDeepCopy } from '../../utils/objDeepCopy';
+import { firstWordLowerCase } from '../../utils/firstWordLowerCase';
 import tplAst from '../../template/interfacePromiseAst';
-import { TypeAnnotations, singleEnumAst } from "../../template/typeAnnotationsMap";
-// import { appendInterfaceToFile } from "./appendFile";
+import { TypeAnnotations, singleEnumAst, TsAstIdentifier } from "../../constant/TSAnnotationMap";
 import { createEnum } from "./createEnumTsAst";
-import { createInterfaceName } from "utils/createInterfaceName";
+import { createInterfaceName } from "./createInterfaceName";
+import { ParamsTableHeader } from '../../constant/MarkDown';
 
 const moduleName = 'home';
 
@@ -32,7 +35,8 @@ export const createPromiseTsAst = (interfaceGather) => {
 */
 export const createPromiseParameters = (paramsTable) => {
   const parameters = [];
-  const [nameIndex, typeIndex, enumIndex] = findAllIndex(['参数名', '类型', '值选项'], paramsTable.header);
+  const [nameIndex, typeIndex, enumIndex] = 
+  findAllIndex([ParamsTableHeader.paramsName, ParamsTableHeader.type, ParamsTableHeader.valueOptions], paramsTable.header);
   paramsTable.cells.forEach(value => {
     const singleParam = objDeepCopy(tplAst.declaration.body.body[0].parameters[0]) as any;
     singleParam.name = value[nameIndex];
@@ -44,7 +48,7 @@ export const createPromiseParameters = (paramsTable) => {
         option: value[enumIndex]
       }
       createEnum(enumValue, enumName => {
-        singleParam.typeAnnotation.typeAnnotation.type = 'TSTypeReference';
+        singleParam.typeAnnotation.typeAnnotation.type = TsAstIdentifier.annotationType;
         singleParam.typeAnnotation.typeAnnotation.typeName.name = enumName;
       });
     }
