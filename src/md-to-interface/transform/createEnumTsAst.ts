@@ -5,6 +5,7 @@ import { toHump } from '../../utils/toHump';
 import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
 import { checkRepeatName } from './nameSpaceControl';
 import { collateEnumAst } from './integrateTsAst';
+import { ENUMVALUEDECOLLATOR } from '../../constant/MarkDown';
 
 /** 
  * @description 生成一个枚举类型用于标示特定的参数类型
@@ -18,9 +19,9 @@ export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: s
   enumName = checkRepeatName(enumName);
   enumValues.forEach(value => {
     const singleMember = objDeepCopy(enumAst.declaration.members[0]) as any;
-    singleMember.id.name = value.split(':')[0];
+    singleMember.id.name = value.split(ENUMVALUEDECOLLATOR)[0];
     singleMember.initializer.type = EnumTypeAnnotations[singleCell.type];
-    singleMember.initializer.value = value.split(':')[1];
+    singleMember.initializer.value = value.split(ENUMVALUEDECOLLATOR)[1];
     members.push(singleMember as never);
   })
   collateEnumAst(enumName, members);

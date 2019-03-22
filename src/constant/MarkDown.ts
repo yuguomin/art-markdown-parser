@@ -58,3 +58,6 @@ export const RESPONSENAMESUFFIX = 'Service';
 
 // interface的标示前缀
 export const INTERFACENAMEPREFIX = 'I';
+
+// md 规定定义参数多种选项固定值，以:为区分含义和内容  large: 1, small: 2
+export const ENUMVALUEDECOLLATOR = ':';
