@@ -51,16 +51,15 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     }
     if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(value[typeIndex])) {
       const childrenChunk = {} as any;
-      const formatName = firstWordUpperCase(value[nameIndex]);
-      let childrenName = `${INTERFACENAMEPREFIX}${formatName}`;
+      const formatName = INTERFACENAMEPREFIX + firstWordUpperCase(value[nameIndex]);
+      let childrenName = checkRepeatName(formatName);
       if (value[typeIndex] === ParamType.array) {
-        lastTypeAnnotation.elementType.typeName.name = childrenName = checkRepeatName(INTERFACENAMEPREFIX + formatName);
-        childrenChunk.header = explainTable.header;
+        lastTypeAnnotation.elementType.typeName.name = childrenName;
       }
       if (value[typeIndex] === ParamType.object) {
-        lastTypeAnnotation.typeName.name = childrenName = checkRepeatName(INTERFACENAMEPREFIX + formatName);
-        childrenChunk.header = explainTable.header;
+        lastTypeAnnotation.typeName.name = childrenName;
       }
+      childrenChunk.header = explainTable.header;
       // 这里三级嵌套没有生成的原因主要是因为二级的table已经只包含父级为子interface的，再在其中找就没了
       let childrenNameGather = [value[nameIndex]];
       childrenChunk.cells = explainTable.cells.filter(cell => {
