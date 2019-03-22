@@ -13,12 +13,12 @@ const MODULENAME = 'home';
 
 /** 
  * @description 生成一个promise的interface结构
- * @param {Array} interfaceGather 抽取出每一个api的'detail', 'params'组成的数组
+ * @param {Array} interfaceChunkGather 抽取出每一个api的'detail', 'params'组成的数组
 */
-export const createPromiseTsAst = (interfaceGather) => {
+export const createPromiseTsAst = (interfaceChunkGather) => {
   const tplName = `${INTERFACENAMEPREFIX}${firstWordUpperCase(MODULENAME)}${RESPONSENAMESUFFIX}`;
   const tplBody = [];
-  interfaceGather.forEach(value => {
+  interfaceChunkGather.forEach(value => {
     const singleBody = objDeepCopy(tplAst.declaration.body.body[0]) as any;
     const everyInterfaceName = createInterfaceName((<any>value).detail);
     singleBody.key.name = firstWordLowerCase(everyInterfaceName.slice(1)); // every key name

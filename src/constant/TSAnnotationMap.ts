@@ -26,6 +26,9 @@ export interface singleEnumAst {
   option: string;
 }
 
+/** 
+ * TS-AST中的一些标识符
+*/
 export namespace TsAstIdentifier {
   export const annotationType = 'TSTypeReference';
 }

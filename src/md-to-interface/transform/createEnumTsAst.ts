@@ -9,7 +9,7 @@ import { collateEnumAst } from './integrateTsAst';
 /** 
  * @description 生成一个枚举类型用于标示特定的参数类型
  * @param {singleEnumAst} 每一个需要枚举的信息
- * @param {string} 当前选项的前置name
+ * @param {function} 执行生成enum之后的回调，可在其中获取enumName
 */
 export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: string) => void) => {
   let enumValues = singleCell.option.replace(/，/ig,',').replace(/\s*/g,"").split(',');
@@ -23,6 +23,6 @@ export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: s
     singleMember.initializer.value = value.split(':')[1];
     members.push(singleMember as never);
   })
-  enumCreated && enumCreated(enumName);
   collateEnumAst(enumName, members);
+  enumCreated && enumCreated(enumName);
 }

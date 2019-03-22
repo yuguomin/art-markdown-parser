@@ -6,9 +6,10 @@ import { HIGHESTPARENT } from "../../constant/MarkDown";
 
 /** 
  * @description 生成interface的方法
+ * @param {Array} interfaceChunkGather 截取出的每一个interface的mdAST
 */
-export const createInterfaceTsAst = (interfaceGather: any) => {
-  interfaceGather.forEach(value => {
+export const createInterfaceTsAst = (interfaceChunkGather: any) => {
+  interfaceChunkGather.forEach(value => {
     const interfaceName = createInterfaceName((<any>value).detail);
     const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT);
     collateInterfaceAst(interfaceName, interfaceBody);

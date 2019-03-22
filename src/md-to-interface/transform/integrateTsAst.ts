@@ -8,7 +8,7 @@ import exportInterfaceAst from "../../template/interfaceTsAstTpl";
 export let tsAstBody: any[] = [];
 
 /** 
- * @description 将enum添加到文件中
+ * @description 将enum添加到内存
  * @param {String} enum的name
  * @param {Array} enum中的body部分
 */
@@ -20,7 +20,7 @@ export const collateEnumAst = (enumName: string, enumBody) => {
 }
 
 /** 
- * @description 将最终生成的interface写入到文件
+ * @description 将最终生成的interface添加到内存
  * @param {String} interfaceName 当前interfaceName
  * @param {Array} interfaceBody 由于重复需要设置上的最终Name
  * @param {Object} interfaceAst 选择是哪一个基本ast结构
@@ -33,6 +33,10 @@ export const collateInterfaceAst = (interfaceName, interfaceBody, interfaceAst?:
   saveAstToMemory(singleInterfaceAst);
 }
 
+/** 
+ * @description 将对应的tsAst结构添加到内存
+ * @param {Object} ast 需要添加的ast结构
+*/
 export const saveAstToMemory = (ast) => {
   tsAstBody.push(ast);
 }

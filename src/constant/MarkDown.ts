@@ -1,3 +1,4 @@
+// md 规定的表格 头
 export namespace MarkDownHeaders {
   export const DETAIL = 'detail';
   export const PARAMS = 'params';
@@ -5,6 +6,7 @@ export namespace MarkDownHeaders {
   export const EXAMPLE = 'example';
 }
 
+// md 规定的 explain 表格 列
 export namespace ExplainTableHeader {
   export const paramsName = '参数名';
   export const type = '类型'; 
@@ -14,6 +16,7 @@ export namespace ExplainTableHeader {
   export const valueOptions = '值选项';
 }
 
+// md 规定的 params 表格 列
 export namespace ParamsTableHeader {
   export const paramsName = '参数名';
   export const type = '类型'; 
@@ -22,17 +25,20 @@ export namespace ParamsTableHeader {
   export const valueOptions = '值选项';
 }
 
+// md 规定的 detail 表格 拥有成员
 export namespace DetailTableMembers {
   export const requestMethod = 'request-method';
   export const requestUrl = 'request-url';
 }
 
+// md 的一些特殊标识符
 export namespace MarkDownIdentifier {
   export const singleInterfaceStart = 'list_start';
   export const headerIdentifier = 'heading';
   export const tableIdentifier = 'table';
 }
 
+// 参数对应类型
 export namespace ParamType {
   export const number = 'int';
   export const string = 'string';
@@ -42,11 +48,11 @@ export namespace ParamType {
 }
 
 
-/** 
- * 定义了数据格式中的最高父级
-*/
+// 定义了数据格式中的最高父级
 export const HIGHESTPARENT = 'data';
 
+// 返回的interfaceName后缀
 export const RESPONSENAMESUFFIX = 'Service';
 
+// interface的标示前缀
 export const INTERFACENAMEPREFIX = 'I';
