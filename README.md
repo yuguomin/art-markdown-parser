@@ -13,7 +13,7 @@ ok
 
 yarn install
 
-your markdown file ./test/test.md
+your markdown file ./test.md
 
 your generate file ./result/result.ts
 
