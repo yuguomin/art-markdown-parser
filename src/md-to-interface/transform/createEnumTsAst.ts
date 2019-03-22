@@ -1,4 +1,4 @@
-import enumAst from '../../template/enumAst';
+import enumAst from '../../template/enumTsAstTpl';
 import { singleEnumAst, EnumTypeAnnotations } from '../../constant/TSAnnotationMap';
 import { objDeepCopy } from '../../utils/objDeepCopy';
 import { toHump } from '../../utils/toHump';

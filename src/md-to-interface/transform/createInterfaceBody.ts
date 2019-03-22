@@ -2,7 +2,7 @@
 import { objDeepCopy } from '../../utils/objDeepCopy';
 import { findAllIndex } from '../../utils/findAllIndex';
 import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
-import ExportInterfaceAst from '../../template/interfaceAst';
+import ExportInterfaceAst from '../../template/interfaceTsAstTpl';
 import { createChildrenInterface } from './createInterfaceChild';
 import { createEnum } from './createEnumTsAst';
 import { singleEnumAst, TsAstIdentifier } from '../../constant/TSAnnotationMap';

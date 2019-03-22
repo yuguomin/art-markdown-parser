@@ -1,6 +1,6 @@
 import { objDeepCopy } from '../../utils/objDeepCopy';
 import { createInterfaceBody } from './createInterfaceBody';
-import ExportInterfaceAst from '../../template/interfaceAst';
+import ExportInterfaceAst from '../../template/interfaceTsAstTpl';
 import { collateInterfaceAst } from './integrateTsAst';
 
 /** 

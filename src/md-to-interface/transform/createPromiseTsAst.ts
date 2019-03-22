@@ -2,11 +2,12 @@ import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
 import { findAllIndex } from '../../utils/findAllIndex';
 import { objDeepCopy } from '../../utils/objDeepCopy';
 import { firstWordLowerCase } from '../../utils/firstWordLowerCase';
-import tplAst from '../../template/interfacePromiseAst';
+import tplAst from '../../template/interfacePromiseTsAsTpl';
 import { TypeAnnotations, singleEnumAst, TsAstIdentifier } from "../../constant/TSAnnotationMap";
 import { createEnum } from "./createEnumTsAst";
 import { createInterfaceName } from "./createInterfaceName";
 import { ParamsTableHeader } from '../../constant/MarkDown';
+import { collateInterfaceAst } from './integrateTsAst';
 
 const moduleName = 'home';
 
@@ -26,6 +27,7 @@ export const createPromiseTsAst = (interfaceGather) => {
     tplBody.push(singleBody as never); // 相当于添加每一个接口的promise
   });
   // appendInterfaceToFile(tplName, tplBody, tplAst);
+  collateInterfaceAst(tplName, tplBody, tplAst);
 }
 
 /** 

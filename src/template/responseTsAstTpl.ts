@@ -1,4 +1,4 @@
-const AjaxAst = {
+const responseTsAstTpl = {
   type: "ExportNamedDeclaration",
   declaration: {
     type: "TSInterfaceDeclaration",
@@ -66,4 +66,4 @@ const AjaxAst = {
   }
 };
 
-export default AjaxAst;
+export default responseTsAstTpl;

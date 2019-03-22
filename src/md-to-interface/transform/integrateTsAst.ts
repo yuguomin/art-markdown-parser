@@ -1,6 +1,6 @@
-import exportEnumAst from "../../template/enumAst";
+import exportEnumAst from "../../template/enumTsAstTpl";
 import { objDeepCopy } from "../../utils/objDeepCopy";
-import exportInterfaceAst from "../../template/interfaceAst";
+import exportInterfaceAst from "../../template/interfaceTsAstTpl";
 
 /** 
  * 内存中保存着所有要生成的tsAst的body部分
@@ -16,7 +16,7 @@ export const collateEnumAst = (enumName: string, enumBody) => {
   const singleEnumAst = objDeepCopy(exportEnumAst) as any;
   singleEnumAst.declaration.id.name = enumName;
   singleEnumAst.declaration.members = enumBody;
-  tsAstBody.push(singleEnumAst);
+  saveAstToMemory(singleEnumAst);
 }
 
 /** 
@@ -30,5 +30,9 @@ export const collateInterfaceAst = (interfaceName, interfaceBody, interfaceAst?:
   const singleInterfaceAst = interfaceAst || objDeepCopy(exportInterfaceAst) as any;
   singleInterfaceAst.declaration.id.name = finalName || interfaceName;
   singleInterfaceAst.declaration.body.body = interfaceBody;
-  tsAstBody.push(singleInterfaceAst);
+  saveAstToMemory(singleInterfaceAst);
+}
+
+export const saveAstToMemory = (ast) => {
+  tsAstBody.push(ast);
 }
