@@ -47,6 +47,8 @@ export namespace ParamType {
   export const object = 'object';
 }
 
+// md 规定的每个表格header的标题等级
+export const TableHeaderDepth = 4;
 
 // 定义了数据格式中的最高父级
 export const HIGHESTPARENT = 'data';

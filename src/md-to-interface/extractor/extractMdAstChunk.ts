@@ -1,4 +1,4 @@
-import { MarkDownIdentifier } from "../../constant/MarkDown";
+import { MarkDownIdentifier, TableHeaderDepth } from "../../constant/MarkDown";
 
 /** 
  * @description 按照一个api取抽取每一个数据
@@ -56,7 +56,7 @@ export const extractChooseTable = (tableText: string, chunkData: any[]) => {
     // confirm right table chunk
     if (
       value.type === MarkDownIdentifier.headerIdentifier &&
-      value.depth === 4 &&
+      value.depth === TableHeaderDepth &&
       value.text === tableText
     ) {
       result =
