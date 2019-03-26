@@ -18,7 +18,7 @@ your markdown file ./test.md
 your generate file ./result/result.ts
 
 generate command
-ts-node index.ts
+ts-node ./src/index.ts
 
 
 

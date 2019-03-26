@@ -12,6 +12,7 @@ import { ParamType } from '../../constant/MarkDown';
 export const getTypeAnnotation = (type: string, childrenInterfaceName: string) => {
   const anntationTpl = objDeepCopy(ExportInterfaceAst.declaration.body.body[0].typeAnnotation) as any;
   anntationTpl.typeAnnotation.type = TypeAnnotations[type];
+  console.log(childrenInterfaceName);
   if (type === ParamType.array) {
     anntationTpl.typeAnnotation.elementType.typeName.name = childrenInterfaceName;
   }

@@ -9,6 +9,7 @@ import { singleEnumAst, TsAstIdentifier } from '../../constant/TSAnnotationMap';
 import { getTypeAnnotation } from './getTypeAnnotation';
 import { checkRepeatName } from './nameSpaceControl';
 import { ExplainTableHeader, ParamType, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
+import { toHump } from '../../utils/toHump';
 
 /** 
  * @description 生成interface的body部分
@@ -51,7 +52,7 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     }
     if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(value[typeIndex])) {
       const childrenChunk = {} as any;
-      const formatName = INTERFACENAMEPREFIX + firstWordUpperCase(value[nameIndex]);
+      const formatName = toHump((INTERFACENAMEPREFIX + firstWordUpperCase(value[nameIndex])), '_');;
       let childrenName = checkRepeatName(formatName);
       if (value[typeIndex] === ParamType.array) {
         lastTypeAnnotation.elementType.typeName.name = childrenName;
