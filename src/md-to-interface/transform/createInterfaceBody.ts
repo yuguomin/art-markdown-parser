@@ -55,7 +55,7 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(value[typeIndex])) {
       const childrenChunk = {} as any;
       const formatName = toHump((INTERFACENAMEPREFIX + firstWordUpperCase(value[nameIndex])), '_');;
-      let childrenName = value[renameIndex] || checkRepeatName(formatName);
+      let childrenName = checkRepeatName(value[renameIndex]) || checkRepeatName(formatName);
       if (value[typeIndex] === ParamType.array) {
         lastTypeAnnotation.elementType.typeName.name = childrenName;
       }

@@ -8,6 +8,7 @@ export const nameSpaceGather: any = [];
  * @param {String} newName 进行判断的名字
 */
 export const checkRepeatName = (newName: string) => {
+  if (newName === '') { return ''; }
   const isRepeatName: boolean = Boolean(nameSpaceGather.filter(nameSpace => {
     if (newName in nameSpace) {
       nameSpace[newName]++;
