@@ -5,21 +5,21 @@ export interface AjaxResult<T> {
     data: T;
 }
 
+export enum ggg {
+    large = 1,
+    middle = 2,
+    small = 3
+}
+
 export enum RewardId {
     large = 1,
     middle = 2,
     small = 3
 }
 
-export enum RewardId1 {
-    large = 1,
-    middle = 2,
-    small = 3
-}
-
 export interface IHomeService {
-    doublexxxDetail(reward_id: RewardId, money: string): Promise<AjaxResult<IDoublexxxDetail>>;
-    dasfsDetail(reward_id: RewardId1, money: string): Promise<AjaxResult<IDasfsDetail>>;
+    doublexxxDetail(reward_id: ggg, money: string): Promise<AjaxResult<IDoublexxxDetail>>;
+    dasfsDetail(reward_id: RewardId, money: string): Promise<AjaxResult<IDasfsDetail>>;
 }
 
 export enum Chance {
@@ -34,8 +34,24 @@ export enum Chance1 {
     xxxx = 3
 }
 
-export interface IRewardsLl {
+export enum RewName {
+    man = "ha",
+    wonman = "hs"
+}
+
+export interface IThird {
+    fourth: boolean;
+}
+
+export interface Ixxxxxxx {
+    rew_name: RewName;
+    third: IThird;
+}
+
+export interface ISssssssssssReeeee {
     chance: Chance1;
+    tel: string;
+    rew: Ixxxxxxx;
 }
 
 export interface IRewards {
@@ -50,7 +66,7 @@ export interface IDoublexxxDetail {
     chance: Chance;
     rest_amount: number;
     my_reward_count: number;
-    rewards_ll: IRewardsLl[];
+    rewards_ll: ISssssssssssReeeee[];
     invest_url: string;
     is_login: boolean;
     activity_status: number;
@@ -69,18 +85,18 @@ export enum Chance3 {
     xxxx = 3
 }
 
-export enum RewName {
+export enum RewName1 {
     man = "ha",
     wonman = "hs"
 }
 
-export interface IThird {
+export interface IThird1 {
     fourth: boolean;
 }
 
 export interface IRew {
-    rew_name: RewName;
-    third: IThird;
+    rew_name: RewName1;
+    third: IThird1;
 }
 
 export interface IRewards1 {

@@ -14,6 +14,7 @@ export namespace ExplainTableHeader {
   export const explain = '说明';
   export const example = '示例';
   export const valueOptions = '值选项';
+  export const rename = 'rename';
 }
 
 // md 规定的 params 表格 列
@@ -23,6 +24,7 @@ export namespace ParamsTableHeader {
   export const explain = '说明';
   export const example = '示例';
   export const valueOptions = '值选项';
+  export const rename = 'rename';
 }
 
 // md 规定的 detail 表格 拥有成员

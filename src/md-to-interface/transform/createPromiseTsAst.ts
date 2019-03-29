@@ -37,8 +37,8 @@ export const createPromiseTsAst = (interfaceChunkGather) => {
 */
 export const createPromiseParameters = (paramsTable) => {
   const parameters = [];
-  const [nameIndex, typeIndex, enumIndex] = 
-  findAllIndex([ParamsTableHeader.paramsName, ParamsTableHeader.type, ParamsTableHeader.valueOptions], paramsTable.header);
+  const [nameIndex, typeIndex, enumIndex, renameIndex] = 
+  findAllIndex([ParamsTableHeader.paramsName, ParamsTableHeader.type, ParamsTableHeader.valueOptions, ParamsTableHeader.rename], paramsTable.header);
   paramsTable.cells.forEach(value => {
     const singleParam = objDeepCopy(tplAst.declaration.body.body[0].parameters[0]) as any;
     singleParam.name = value[nameIndex];
@@ -46,6 +46,7 @@ export const createPromiseParameters = (paramsTable) => {
     if (value[enumIndex]) {
       const enumValue: singleEnumAst = {
         currentName: value[nameIndex],
+        rename: value[renameIndex],
         type: value[typeIndex],
         option: value[enumIndex]
       }

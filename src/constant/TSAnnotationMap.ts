@@ -22,6 +22,7 @@ export enum EnumTypeAnnotations {
 */
 export interface singleEnumAst {
   currentName: string;
+  rename?: string;
   type: string;
   option: string;
 }

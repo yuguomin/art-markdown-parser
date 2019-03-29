@@ -22,9 +22,10 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     nameIndex,
     typeIndex,
     parentsIndex,
-    enumIndex
+    enumIndex,
+    renameIndex
   ] = findAllIndex(
-    [ExplainTableHeader.paramsName, ExplainTableHeader.type, ExplainTableHeader.parents, ExplainTableHeader.valueOptions],
+    [ExplainTableHeader.paramsName, ExplainTableHeader.type, ExplainTableHeader.parents, ExplainTableHeader.valueOptions, ExplainTableHeader.rename],
     explainTable.header
   );
   const result = [];
@@ -42,6 +43,7 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     if (value[parentsIndex] === currentParent && value[enumIndex]) {
       const enumValue: singleEnumAst = {
         currentName: value[nameIndex],
+        rename: value[renameIndex],
         type: value[typeIndex],
         option: value[enumIndex]
       }
@@ -53,7 +55,7 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(value[typeIndex])) {
       const childrenChunk = {} as any;
       const formatName = toHump((INTERFACENAMEPREFIX + firstWordUpperCase(value[nameIndex])), '_');;
-      let childrenName = checkRepeatName(formatName);
+      let childrenName = value[renameIndex] || checkRepeatName(formatName);
       if (value[typeIndex] === ParamType.array) {
         lastTypeAnnotation.elementType.typeName.name = childrenName;
       }

@@ -15,7 +15,7 @@ import { ENUMVALUEDECOLLATOR } from '../../constant/MarkDown';
 export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: string) => void) => {
   let enumValues = singleCell.option.replace(/，/ig,',').replace(/\s*/g,"").split(',');
   const members = [];
-  let enumName = firstWordUpperCase(toHump(singleCell.currentName, '_'));
+  let enumName = singleCell.rename || firstWordUpperCase(toHump(singleCell.currentName, '_'));
   enumName = checkRepeatName(enumName);
   enumValues.forEach(value => {
     const singleMember = objDeepCopy(enumAst.declaration.members[0]) as any;
