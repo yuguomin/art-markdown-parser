@@ -9,15 +9,15 @@
 
 #### params
 
-| 参数名    | 类型  | 说明     | 示例 | 值选项 |
+| 参数名    | 类型  | 值选项 | 示例 | 说明 |
 | --------- | ----- | -------- | ---- | --- |
-| reward_id | int | 奖励的id | 111  | large:1, middle:2, small:3 |
+| reward_id | int | large:1, middle:2, small:3 | 111 | 奖励的id |
 
 #### explain
 
-| 参数名           | 类型      | 说明                 | parents | 示例  | 值选项 |
+| 参数名           | 类型      | parents | 值选项 | 示例 | 说明 | 
 | --------------- | --------- | ------------------- | ------- | ---- | ----- |
-| chance          | int     | 剩余抽奖机会          | data    | 0 | large:1, middle:2, small:3 |
+| chance          | int     |  data    | large:1, middle:2, small:3 | 0 | 剩余抽奖机会 |
 
 #### example
 

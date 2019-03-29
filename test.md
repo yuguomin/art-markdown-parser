@@ -37,16 +37,6 @@
 
 #### example
 
-interface xxx {
-    list: ss[]
-}
-
-list: ['1', '2']
-
-i ss {
-    chance: string
-}
-
 ```json
 {
     "success": true,
