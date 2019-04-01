@@ -5,7 +5,7 @@ import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
 import ExportInterfaceAst from '../../template/interfaceTsAstTpl';
 import { createChildrenInterface } from './createInterfaceChild';
 import { createEnum } from './createEnumTsAst';
-import { singleEnumAst, TsAstIdentifier } from '../../constant/TSAnnotationMap';
+import { singleEnumAst, TsAstIdentifier, TypeAnnotations } from '../../constant/TSAnnotationMap';
 import { getTypeAnnotation } from './getTypeAnnotation';
 import { checkRepeatName } from './nameSpaceControl';
 import { ExplainTableHeader, ParamType, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
@@ -52,14 +52,24 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
         lastTypeAnnotation.typeName.name = enumName;
       });
     }
-    if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(value[typeIndex])) {
+    const finalType = value[typeIndex].split('(')[0];
+    if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(finalType)) {
       const childrenChunk = {} as any;
       const formatName = toHump((INTERFACENAMEPREFIX + firstWordUpperCase(value[nameIndex])), '_');;
       let childrenName = checkRepeatName(value[renameIndex]) || checkRepeatName(formatName);
-      if (value[typeIndex] === ParamType.array) {
-        lastTypeAnnotation.elementType.typeName.name = childrenName;
+      if (finalType === ParamType.array) {
+        // const anntationTpl = objDeepCopy(ExportInterfaceAst.declaration.body.body[0].typeAnnotation) as any;
+        const arrayChildrenType = value[typeIndex].match(/[^\(\)]+(?=\))/g);
+        // 没有匹配项，默认为object类型
+        if (!arrayChildrenType) {
+          lastTypeAnnotation.elementType.typeName.name = childrenName;
+        } else {
+          // lastTypeAnnotation.type = TypeAnnotations['array'];
+          lastTypeAnnotation.elementType.type = TypeAnnotations[arrayChildrenType[0]];
+        }
+        // lastTypeAnnotation.elementType.typeName.name = childrenName;
       }
-      if (value[typeIndex] === ParamType.object) {
+      if (finalType === ParamType.object) {
         lastTypeAnnotation.typeName.name = childrenName;
       }
       childrenChunk.header = explainTable.header;
@@ -67,7 +77,9 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
       let childrenNameGather = [value[nameIndex]];
       childrenChunk.cells = explainTable.cells.filter(cell => {
         // 这里先找到符合该项的每一个子集，如果子集是对象，再把该对象子集找到
-        if ([ParamType.array, ParamType.object].includes(cell[typeIndex])) {
+        const typeValue = cell[typeIndex].split('(')[0];
+        const childrenType = cell[typeIndex].match(/[^\(\)]+(?=\))/g);
+        if ([ParamType.array, ParamType.object].includes(typeValue) && (!childrenType || childrenType === ParamType.object)) {
           childrenNameGather.push(cell[parentsIndex] + '.' + cell[nameIndex]);
         }
         if (childrenNameGather.includes(cell[parentsIndex])) {

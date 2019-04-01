@@ -10,13 +10,23 @@ import { ParamType } from '../../constant/MarkDown';
  * @returns 每次key对应的typeAnnotation节点
 */
 export const getTypeAnnotation = (type: string, childrenInterfaceName: string) => {
+  console.log(type);
   const anntationTpl = objDeepCopy(ExportInterfaceAst.declaration.body.body[0].typeAnnotation) as any;
-  anntationTpl.typeAnnotation.type = TypeAnnotations[type];
+  // TODO: 这里针对array有多种情况可能
+  anntationTpl.typeAnnotation.type = TypeAnnotations[type.split('(')[0]];
   if (type === ParamType.array) {
-    anntationTpl.typeAnnotation.elementType.typeName.name = childrenInterfaceName;
+    const arrayChildrenType = type.match(/[^\(\)]+(?=\))/g);
+    // 没有匹配项，默认为object类型
+    if (!arrayChildrenType) {
+      anntationTpl.typeAnnotation.type = TypeAnnotations[type];
+      anntationTpl.typeAnnotation.elementType.typeName.name = childrenInterfaceName;
+    } else {
+      anntationTpl.typeAnnotation.elementType.type = TypeAnnotations[arrayChildrenType[0]];
+    }
   }
   if (type === ParamType.object) {
     anntationTpl.typeAnnotation.typeName.name = childrenInterfaceName;
   }
+  console.log(anntationTpl);
   return anntationTpl;
 }
