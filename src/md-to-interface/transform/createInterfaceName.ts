@@ -2,6 +2,7 @@ import { flattenArray } from '../../utils/flattenArray';
 import { toHump } from '../../utils/toHump';
 import isCutOut from '../../../art.config.js';
 import { DetailTableMembers, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
+import { removeSymbol } from '../../utils/removeSymbol';
 
 /** 
  * @description 生成最终的一个interface名字
@@ -17,6 +18,8 @@ export const createInterfaceName = (detailTable: any) => {
     }
   });
   urlStr = isCutOut ? urlStr.replace(/\/\w+/, '') : urlStr;
+  urlStr = removeSymbol(urlStr);
+  console.log(urlStr);
   resultStr = INTERFACENAMEPREFIX + toHump(urlStr, '/');
   return resultStr;
 };

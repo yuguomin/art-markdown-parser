@@ -5,7 +5,7 @@
 | 类别 | 详情 |
 | --- | --- |
 | request-method | POST |
-| request-url | /activity/doublexxx/detail |
+| request-url | /activity/double-xxx/detail |
 
 #### params
 
@@ -74,7 +74,7 @@
 | 类别 | 详情 |
 | --- | --- |
 | request-method | POST |
-| request-url | /activity/dasfs/detail |
+| request-url | /activity/das-fs/detail |
 
 #### params
 
