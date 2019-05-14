@@ -1,27 +1,38 @@
 # art-markdown-parser
+
+## Summary of functions
 For art-framework parsing .md file to mock interface and mock base file.
 
-check your golbal ts
+## Environment
+install global typescript
 
-tsc -v
-
-you need install
+```shell
 yarn add -g typescript
+```
 
-you have install
-ok
+## Install
+install packages
 
+```shell
 yarn install
+```
 
-your markdown file ./test.md
+## How to use
+#### 1. change the need to parse markdown file to your content.
+   markdown file path: /test.md
 
-your generate file ./result/result.ts
+#### 2. execute command to parse
 
-generate command
+```shell
 ts-node ./src/index.ts
+```
+#### 3. get result
+   result file path: /result/result.ts
 
+## Functional test
+#### 1. parse interface.ts to tsAst and observe structure
+   file path: /test/sourceParser.ts
 
-
-sourceParser.ts
-paser interface.ts to tsAst and observe structure
-command: ts-node ./test/sourceParser.ts
+```shell
+ts-node ./test/sourceParser.ts
+```
