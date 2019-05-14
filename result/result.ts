@@ -18,8 +18,8 @@ export enum RewardId {
 }
 
 export interface IHomeService {
-    doublexxxDetail(reward_id: ggg, money: string): Promise<AjaxResult<IDoublexxxDetail>>;
-    dasfsDetail(reward_id: RewardId, money: string): Promise<AjaxResult<IDasfsDetail>>;
+    doubleXxxDetail(reward_id: ggg, money: string): Promise<AjaxResult<IDoubleXxxDetail>>;
+    dasFsDetail(reward_id: RewardId, money: string): Promise<AjaxResult<IDasFsDetail>>;
 }
 
 export enum Chance {
@@ -62,7 +62,7 @@ export interface IList {
     rewards: IRewards;
 }
 
-export interface IDoublexxxDetail {
+export interface IDoubleXxxDetail {
     chance: Chance;
     rest_amount: number;
     my_reward_count: number;
@@ -113,7 +113,7 @@ export interface IList1 {
     rewards: IRewards2;
 }
 
-export interface IDasfsDetail {
+export interface IDasFsDetail {
     chance: Chance2;
     rest_amount: number;
     my_reward_count: number;
