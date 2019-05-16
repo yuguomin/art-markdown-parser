@@ -7,7 +7,7 @@ For art-framework parsing .md file to mock interface and mock base file.
 install global typescript
 
 ```shell
-yarn add -g typescript
+yarn add global typescript
 ```
 
 ## Install
