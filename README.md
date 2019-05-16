@@ -4,10 +4,10 @@
 For art-framework parsing .md file to mock interface and mock base file.
 
 ## Environment
-install global typescript
+install global ts-node for execute ts script
 
 ```shell
-yarn add global typescript
+yarn add global ts-node
 ```
 
 ## Install
