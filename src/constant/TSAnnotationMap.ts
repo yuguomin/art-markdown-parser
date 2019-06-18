@@ -3,6 +3,8 @@
 */
 export enum TypeAnnotations {
   int = "TSNumberKeyword",
+  number = "TSNumberKeyword",
+  float = "TSNumberKeyword",
   string = "TSStringKeyword",
   boolean = "TSBooleanKeyword",
   array = "TSArrayType",
@@ -13,7 +15,7 @@ export enum TypeAnnotations {
  * 定义了enum的value值对应的类型
 */
 export enum EnumTypeAnnotations {
-  int = "NumericLiteral",
+  number = "NumericLiteral",
   string = "StringLiteral"
 }
 

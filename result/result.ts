@@ -1,7 +1,7 @@
 
 export interface AjaxResult<T> {
     code: number;
-    message: string;
+    msg: string;
     data: T;
 }
 
@@ -71,6 +71,7 @@ export interface IDoubleXxxDetail {
     is_login: boolean;
     activity_status: number;
     list: IList[];
+    testarr: string[];
 }
 
 export enum Chance2 {

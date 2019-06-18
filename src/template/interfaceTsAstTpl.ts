@@ -15,6 +15,7 @@ const exportInterfaceAst = {
             type: "Identifier",
             name: "" // every key name
           },
+          optional: false, // is optional
           typeAnnotation: {
             type: "TSTypeAnnotation",
             typeAnnotation: {

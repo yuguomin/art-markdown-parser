@@ -49,6 +49,16 @@ export namespace ParamType {
   export const object = 'object';
 }
 
+export enum MdToJsTypeMap {
+  int = "number",
+  number = "number",
+  float = "number",
+  string = "string",
+  boolean = "boolean",
+  array = "array",
+  object = "object"
+}
+
 // md 规定的每个表格header的标题等级
 export const TableHeaderDepth = 4;
 

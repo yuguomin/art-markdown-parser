@@ -42,7 +42,7 @@ export const createPromiseParameters = (paramsTable) => {
   paramsTable.cells.forEach(value => {
     const singleParam = objDeepCopy(tplAst.declaration.body.body[0].parameters[0]) as any;
     singleParam.name = value[nameIndex];
-    singleParam.typeAnnotation.typeAnnotation.type = TypeAnnotations[value[typeIndex]];
+    singleParam.typeAnnotation.typeAnnotation.type = TypeAnnotations[value[typeIndex].toLowerCase()];
     if (value[enumIndex]) {
       const enumValue: singleEnumAst = {
         currentName: value[nameIndex],

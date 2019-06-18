@@ -34,6 +34,7 @@
 | list    | array  | 奖励名称             | data | 111积分 |  |  |
 | rewards | object | asd | data.list | sdd |  |  |
 | type | int | asd | data.list.rewards | asd |  |  |
+| testarr | Array(string) | asd | data | xxx |  |  |
 
 #### example
 

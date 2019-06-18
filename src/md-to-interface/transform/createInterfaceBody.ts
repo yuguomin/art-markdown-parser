@@ -5,10 +5,10 @@ import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
 import ExportInterfaceAst from '../../template/interfaceTsAstTpl';
 import { createChildrenInterface } from './createInterfaceChild';
 import { createEnum } from './createEnumTsAst';
-import { singleEnumAst, TsAstIdentifier } from '../../constant/TSAnnotationMap';
+import { singleEnumAst, TsAstIdentifier, TypeAnnotations } from '../../constant/TSAnnotationMap';
 import { getTypeAnnotation } from './getTypeAnnotation';
 import { checkRepeatName } from './nameSpaceControl';
-import { ExplainTableHeader, ParamType, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
+import { ExplainTableHeader, ParamType, INTERFACENAMEPREFIX, MdToJsTypeMap } from '../../constant/MarkDown';
 import { toHump } from '../../utils/toHump';
 
 /** 
@@ -25,19 +25,33 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
     enumIndex,
     renameIndex
   ] = findAllIndex(
-    [ExplainTableHeader.paramsName, ExplainTableHeader.type, ExplainTableHeader.parents, ExplainTableHeader.valueOptions, ExplainTableHeader.rename],
+    [
+     ExplainTableHeader.paramsName,
+     ExplainTableHeader.type,
+     ExplainTableHeader.parents,
+     ExplainTableHeader.valueOptions,
+     ExplainTableHeader.rename
+    ],
     explainTable.header
   );
-  const result = [];
+  const result: any[] = [];
   let lastTypeAnnotation: any;
   explainTable.cells.forEach(value => {
     const bodyTemplate = objDeepCopy(
       ExportInterfaceAst.declaration.body.body[0]
       ) as any;
+    const valueName = value[nameIndex];
+    if (valueName[valueName.length - 1] === '?' || valueName[valueName.length - 1] === '？') {
+      value[nameIndex] = valueName.substr(0, valueName.length - 1);
+      bodyTemplate.optional = true;
+    }
+    // console.log(MdToJsTypeMap[value[typeIndex]]);
+    const isSpecificArr = Boolean(value[typeIndex].replace(/\([^\)]*\)/g,""));
+    value[typeIndex] = isSpecificArr ? value[typeIndex].toLowerCase() : MdToJsTypeMap[value[typeIndex].toLowerCase()];
     if (value[parentsIndex] === currentParent) {
       bodyTemplate.key.name = value[nameIndex];
       bodyTemplate.typeAnnotation = getTypeAnnotation(value[typeIndex], value[nameIndex]);
-      result.push(bodyTemplate as never);
+      result.push(bodyTemplate);
       lastTypeAnnotation = (<any>result[result.length - 1]).typeAnnotation.typeAnnotation;
     };
     if (value[parentsIndex] === currentParent && value[enumIndex]) {
@@ -52,14 +66,19 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
         lastTypeAnnotation.typeName.name = enumName;
       });
     }
-    if (value[parentsIndex] === currentParent && [ParamType.array, ParamType.object].includes(value[typeIndex])) {
+    const typeValue = value[typeIndex];
+    const arrChildrenType = (typeValue.substring(typeValue.indexOf("(") + 1, typeValue.indexOf(")"))).toLowerCase();
+    const removeChilrenType = typeValue.replace(/\([^\)]*\)/g,"")
+    const isObjectArr = arrChildrenType === ParamType.object && removeChilrenType === ParamType.array;
+    value[typeIndex] = isObjectArr ? ParamType.array : value[typeIndex];
+    if (value[parentsIndex] === currentParent && ([ParamType.array, ParamType.object].includes(typeValue) || isObjectArr)) {
       const childrenChunk = {} as any;
       const formatName = toHump((INTERFACENAMEPREFIX + firstWordUpperCase(value[nameIndex])), '_');;
       let childrenName = checkRepeatName(value[renameIndex]) || checkRepeatName(formatName);
-      if (value[typeIndex] === ParamType.array) {
+      if (removeChilrenType === ParamType.array) {
         lastTypeAnnotation.elementType.typeName.name = childrenName;
       }
-      if (value[typeIndex] === ParamType.object) {
+      if (removeChilrenType === ParamType.object) {
         lastTypeAnnotation.typeName.name = childrenName;
       }
       childrenChunk.header = explainTable.header;
@@ -68,7 +87,11 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
       childrenChunk.cells = explainTable.cells.filter(cell => {
         // 这里先找到符合该项的每一个子集，如果子集是对象，再把该对象子集找到
         if ([ParamType.array, ParamType.object].includes(cell[typeIndex])) {
-          childrenNameGather.push(cell[parentsIndex] + '.' + cell[nameIndex]);
+          const cellName =  cell[nameIndex];
+          const cellNameLastIndex = cellName.length - 1;
+          const parentNodeName = cellName[cellNameLastIndex] === '?' || cellName[cellNameLastIndex] === '？' ?
+          cellName.substr(0, cellNameLastIndex) : cellName;
+          childrenNameGather.push(cell[parentsIndex] + '.' + parentNodeName);
         }
         if (childrenNameGather.includes(cell[parentsIndex])) {
           return cell;
@@ -76,6 +99,12 @@ export const createInterfaceBody = (explainTable: any, currentParent: string) =>
       });
       createChildrenInterface(childrenChunk, value[parentsIndex] + '.' +  value[nameIndex], childrenName);
     };
+    // if (value[parentsIndex] === currentParent
+    //   && typeValue.substring(typeValue.indexOf("(") + 1, typeValue.indexOf(")"))
+    //   && typeValue.replace(/\([^\)]*\)/g,"") === ParamType.array) {
+    //     // this
+    //     lastTypeAnnotation.type = childrenName;
+    //   }
   });
   return result;
 };

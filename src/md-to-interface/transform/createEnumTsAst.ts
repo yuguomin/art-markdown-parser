@@ -5,7 +5,7 @@ import { toHump } from '../../utils/toHump';
 import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
 import { checkRepeatName } from './nameSpaceControl';
 import { collateEnumAst } from './integrateTsAst';
-import { ENUMVALUEDECOLLATOR } from '../../constant/MarkDown';
+import { ENUMVALUEDECOLLATOR, MdToJsTypeMap } from '../../constant/MarkDown';
 
 /** 
  * @description 生成一个枚举类型用于标示特定的参数类型
@@ -14,15 +14,15 @@ import { ENUMVALUEDECOLLATOR } from '../../constant/MarkDown';
 */
 export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: string) => void) => {
   let enumValues = singleCell.option.replace(/，/ig,',').replace(/\s*/g,"").split(',');
-  const members = [];
+  const members: any[] = [];
   let enumName = singleCell.rename || firstWordUpperCase(toHump(singleCell.currentName, '_'));
   enumName = checkRepeatName(enumName);
   enumValues.forEach(value => {
     const singleMember = objDeepCopy(enumAst.declaration.members[0]) as any;
     singleMember.id.name = value.split(ENUMVALUEDECOLLATOR)[0];
-    singleMember.initializer.type = EnumTypeAnnotations[singleCell.type];
+    singleMember.initializer.type = EnumTypeAnnotations[MdToJsTypeMap[singleCell.type]];
     singleMember.initializer.value = value.split(ENUMVALUEDECOLLATOR)[1];
-    members.push(singleMember as never);
+    members.push(singleMember);
   })
   collateEnumAst(enumName, members);
   enumCreated && enumCreated(enumName);

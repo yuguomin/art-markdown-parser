@@ -35,7 +35,7 @@ const responseTsAstTpl = {
           type: "TSPropertySignature",
           key: {
             type: "Identifier",
-            name: "message"
+            name: "msg"
           },
           typeAnnotation: {
             type: "TSTypeAnnotation",
