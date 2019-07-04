@@ -1,6 +1,6 @@
 import { flattenArray } from '../../utils/flattenArray';
 import { toHump } from '../../utils/toHump';
-import isCutOut from '../../../art.config.js';
+import isCutOut from '../../art.config.js';
 import { DetailTableMembers, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
 
 /** 

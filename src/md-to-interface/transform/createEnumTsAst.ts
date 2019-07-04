@@ -19,7 +19,7 @@ export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: s
   enumName = checkRepeatName(enumName);
   enumValues.forEach(value => {
     const singleMember = objDeepCopy(enumAst.declaration.members[0]) as any;
-    singleMember.id.name = value.split(ENUMVALUEDECOLLATOR)[0];
+    singleMember.id.name = toHump(value.split(ENUMVALUEDECOLLATOR)[0], '_');
     singleMember.initializer.type = EnumTypeAnnotations[MdToJsTypeMap[singleCell.type]];
     singleMember.initializer.value = value.split(ENUMVALUEDECOLLATOR)[1];
     members.push(singleMember);

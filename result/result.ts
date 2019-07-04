@@ -6,10 +6,10 @@ export interface AjaxResult<T> {
 }
 
 export enum TypeId {
-    daichao_index_page = 1,
-    daichao_loan_page = 2,
-    pkg_index_page = 3,
-    pkg_repay_page = 4
+    daichaoIndexPage = 1,
+    daichaoLoanPage = 2,
+    pkgIndexPage = 3,
+    pkgRepayPage = 4
 }
 
 export interface IHomeService {
