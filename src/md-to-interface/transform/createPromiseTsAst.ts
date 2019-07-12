@@ -9,14 +9,14 @@ import { createInterfaceName } from "./createInterfaceName";
 import { ParamsTableHeader, RESPONSE_NAME_SUFFIX, INTERFACE_NAME_PREFIX } from '../../constant/MarkDown';
 import { collateInterfaceAst } from './integrateTsAst';
 
-const MODULENAME = 'home';
+const MODULE_NAME = 'home';
 
 /** 
  * @description 生成一个promise的interface结构
  * @param {Array} interfaceChunkGather 抽取出每一个api的'detail', 'params'组成的数组
 */
 export const createPromiseTsAst = (interfaceChunkGather) => {
-  const tplName = `${INTERFACE_NAME_PREFIX}${firstWordUpperCase(MODULENAME)}${RESPONSE_NAME_SUFFIX}`;
+  const tplName = `${INTERFACE_NAME_PREFIX}${firstWordUpperCase(MODULE_NAME)}${RESPONSE_NAME_SUFFIX}`;
   const tplBody = [];
   interfaceChunkGather.forEach(value => {
     const singleBody = objDeepCopy(tplAst.declaration.body.body[0]) as any;
