@@ -1,7 +1,7 @@
 import { createInterfaceName } from "./createInterfaceName";
 import { createInterfaceBody } from "./createInterfaceBody";
 import { collateInterfaceAst } from "./integrateTsAst";
-import { HIGHESTPARENT } from "../../constant/MarkDown";
+import { HIGHEST_PARENT } from "../../constant/MarkDown";
 
 
 /** 
@@ -11,7 +11,7 @@ import { HIGHESTPARENT } from "../../constant/MarkDown";
 export const createInterfaceTsAst = (interfaceChunkGather: any) => {
   interfaceChunkGather.forEach(value => {
     const interfaceName = createInterfaceName((<any>value).detail);
-    const interfaceBody = createInterfaceBody((<any>value).explain, HIGHESTPARENT);
+    const interfaceBody = createInterfaceBody((<any>value).explain, HIGHEST_PARENT);
     collateInterfaceAst(interfaceName, interfaceBody);
   });
 };

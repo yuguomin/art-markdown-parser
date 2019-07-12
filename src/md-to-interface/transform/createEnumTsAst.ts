@@ -1,11 +1,11 @@
 import enumAst from '../../template/enumTsAstTpl';
 import { singleEnumAst, EnumTypeAnnotations } from '../../constant/TSAnnotationMap';
 import { objDeepCopy } from '../../utils/objDeepCopy';
-import { toHump } from '../../utils/toHump';
+import { toCamelCase } from '../../utils/toCamelCase';
 import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
 import { checkRepeatName } from './nameSpaceControl';
 import { collateEnumAst } from './integrateTsAst';
-import { ENUMVALUEDECOLLATOR, MdToJsTypeMap } from '../../constant/MarkDown';
+import { ENUM_VALUE_DECOLLATOR, MdToJsTypeMap } from '../../constant/MarkDown';
 
 /** 
  * @description 生成一个枚举类型用于标示特定的参数类型
@@ -15,13 +15,13 @@ import { ENUMVALUEDECOLLATOR, MdToJsTypeMap } from '../../constant/MarkDown';
 export const createEnum = (singleCell: singleEnumAst, enumCreated?: (enumName: string) => void) => {
   let enumValues = singleCell.option.replace(/，/ig,',').replace(/\s*/g,"").split(',');
   const members: any[] = [];
-  let enumName = singleCell.rename || firstWordUpperCase(toHump(singleCell.currentName, '_'));
+  let enumName = singleCell.rename || firstWordUpperCase(toCamelCase(singleCell.currentName, '_'));
   enumName = checkRepeatName(enumName);
   enumValues.forEach(value => {
     const singleMember = objDeepCopy(enumAst.declaration.members[0]) as any;
-    singleMember.id.name = toHump(value.split(ENUMVALUEDECOLLATOR)[0], '_');
+    singleMember.id.name = toCamelCase(value.split(ENUM_VALUE_DECOLLATOR)[0], '_');
     singleMember.initializer.type = EnumTypeAnnotations[MdToJsTypeMap[singleCell.type]];
-    singleMember.initializer.value = value.split(ENUMVALUEDECOLLATOR)[1];
+    singleMember.initializer.value = value.split(ENUM_VALUE_DECOLLATOR)[1];
     members.push(singleMember);
   })
   collateEnumAst(enumName, members);

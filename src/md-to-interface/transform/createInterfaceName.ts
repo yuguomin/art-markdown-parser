@@ -1,7 +1,7 @@
 import { flattenArray } from '../../utils/flattenArray';
-import { toHump } from '../../utils/toHump';
+import { toCamelCase } from '../../utils/toCamelCase';
 import isCutOut from '../../art.config.js';
-import { DetailTableMembers, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
+import { DetailTableMembers, INTERFACE_NAME_PREFIX } from '../../constant/MarkDown';
 
 /** 
  * @description 生成最终的一个interface名字
@@ -17,6 +17,6 @@ export const createInterfaceName = (detailTable: any) => {
     }
   });
   urlStr = isCutOut ? urlStr.replace(/\/\w+/, '') : urlStr;
-  resultStr = INTERFACENAMEPREFIX + toHump(toHump(urlStr, '/'), '-');
+  resultStr = INTERFACE_NAME_PREFIX + toCamelCase(toCamelCase(urlStr, '/'), '-');
   return resultStr;
 };

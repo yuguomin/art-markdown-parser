@@ -6,7 +6,7 @@ import tplAst from '../../template/interfacePromiseTsAsTpl';
 import { TypeAnnotations, singleEnumAst, TsAstIdentifier } from "../../constant/TSAnnotationMap";
 import { createEnum } from "./createEnumTsAst";
 import { createInterfaceName } from "./createInterfaceName";
-import { ParamsTableHeader, RESPONSENAMESUFFIX, INTERFACENAMEPREFIX } from '../../constant/MarkDown';
+import { ParamsTableHeader, RESPONSE_NAME_SUFFIX, INTERFACE_NAME_PREFIX } from '../../constant/MarkDown';
 import { collateInterfaceAst } from './integrateTsAst';
 
 const MODULENAME = 'home';
@@ -16,7 +16,7 @@ const MODULENAME = 'home';
  * @param {Array} interfaceChunkGather 抽取出每一个api的'detail', 'params'组成的数组
 */
 export const createPromiseTsAst = (interfaceChunkGather) => {
-  const tplName = `${INTERFACENAMEPREFIX}${firstWordUpperCase(MODULENAME)}${RESPONSENAMESUFFIX}`;
+  const tplName = `${INTERFACE_NAME_PREFIX}${firstWordUpperCase(MODULENAME)}${RESPONSE_NAME_SUFFIX}`;
   const tplBody = [];
   interfaceChunkGather.forEach(value => {
     const singleBody = objDeepCopy(tplAst.declaration.body.body[0]) as any;
