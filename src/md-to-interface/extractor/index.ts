@@ -15,7 +15,7 @@ export const extractNeedTransformData = (mdAST) => {
   const transformData: transformData = {
     mdAstPromisePart: extractMdAstChunk(mdAST, [MarkDownHeaders.DETAIL, MarkDownHeaders.PARAMS]),
     mdAstInterfacePart: extractMdAstChunk(mdAST, [MarkDownHeaders.DETAIL, MarkDownHeaders.EXPLAIN]),
-    mdAstMockPart: extractMdAstChunk(mdAST, [MarkDownHeaders.EXAMPLE])
+    mdAstMockPart: extractMdAstChunk(mdAST, [MarkDownHeaders.DETAIL, MarkDownHeaders.EXAMPLE])
   };
   return transformData;
 }
