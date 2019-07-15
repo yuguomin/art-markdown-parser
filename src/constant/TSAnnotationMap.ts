@@ -20,6 +20,15 @@ export enum EnumTypeAnnotations {
 }
 
 /** 
+ * 定义对应import的方式 default or value
+ */
+export enum ImportValueWay {
+  value = 'ImportSpecifier',
+  default = 'ImportDefaultSpecifier'
+}
+
+
+/** 
  * enum每条生成所需内容定义
 */
 export interface singleEnumAst {

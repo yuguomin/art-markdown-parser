@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "parse": "ts-node ./src/index.ts"
+    "parse": "ts-node ./src/index.ts",
+    "mock": "ts-node ./src/mock.ts",
+    "test": "ts-node ./test/sourceParser.ts"
   },
   "author": "ygm",
   "dependencies": {

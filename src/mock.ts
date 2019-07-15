@@ -1,8 +1,8 @@
 // 入口文件
-import { readMdFile } from "./md-to-interface/fileReader";
-import { extractNeedTransformData } from "./md-to-interface/extractor";
-import { createTsAst } from "./md-to-interface/transform";
-import { appendToFile } from "./md-to-interface/generator";
+import { readMdFile } from "./md-to-mock/fileReader";
+import { extractNeedTransformData } from "./md-to-mock/extractor";
+import { createMockTsAst } from "./md-to-mock/transform";
+import { appendToFile } from "./md-to-mock/generator";
 
 /** 
  * @description 生成需要的interface方法
@@ -14,7 +14,7 @@ import { appendToFile } from "./md-to-interface/generator";
 export const parseMdToInterface = () => {
   const mdAST = readMdFile();
   const transformData =  extractNeedTransformData(mdAST);
-  const interfaceAST = createTsAst(transformData);
+  const interfaceAST = createMockTsAst(transformData);
   appendToFile(interfaceAST);
 }
 

@@ -29,11 +29,11 @@ recast.visit(ast, {
   }
 });
 // console.log(node.value);
-console.log((ast)); // 枚举的key对应的value
+// console.log((ast)); // 枚举的key对应的value
 
 // node.value.declaration.id.name = 'ygm'
 // console.log((node.value.declaration.body.body[0]));
-// console.log(JSON.stringify(ast));
+console.log(JSON.stringify(ast));
 // console.log(recast.print(node).code);
 
 
