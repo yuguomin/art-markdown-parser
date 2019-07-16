@@ -27,6 +27,35 @@ export enum ImportValueWay {
   default = 'ImportDefaultSpecifier'
 }
 
+/** 
+ * 导出声明类型的配置 
+ */
+export enum ExportDeclarationType {
+  class = 'ClassDeclaration'
+}
+
+/**
+ * class声明body元素的类型
+ */
+export enum ClassBodyType {
+  method = 'ClassMethod'
+}
+
+/** 
+ * 对应属性的可访问属性
+ */
+export enum ClassPrototypeAccessibility {
+  public = 'public',
+  private = 'private'
+}
+
+/** 
+ * 对应属性类型
+ */
+export enum prototypeKindType {
+  method = 'method'
+}
+
 
 /** 
  * enum每条生成所需内容定义

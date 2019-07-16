@@ -1,5 +1,5 @@
 
-export const decoratorTsAst = {
+export const decoratorTsAstTpl = {
   type: 'Decorator',
   callee: {
     type: 'CallExpression',
@@ -9,7 +9,7 @@ export const decoratorTsAst = {
     },
     arguments: [
       {
-        type: '', // string use 'StringLiteral' ? number? any other else
+        type: 'StringLiteral', // string use 'StringLiteral' ? number? any other else
         value: '' // param value
       }
     ]

@@ -11,11 +11,11 @@ import { appendToFile } from "./md-to-mock/generator";
  * 3- 转换为 TS-AST
  * 4- 写入内容
 */
-export const parseMdToInterface = () => {
+export const parseMdToInterface = (output) => {
   const mdAST = readMdFile();
   const transformData = extractNeedTransformData(mdAST);
-  const interfaceAST = createMockTsAst(transformData);
+  const interfaceAST = createMockTsAst(transformData, output);
   appendToFile(interfaceAST);
 }
 
-parseMdToInterface();
+parseMdToInterface('mock/home/xxx/xx/MineController.ts');

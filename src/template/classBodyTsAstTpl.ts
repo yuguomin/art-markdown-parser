@@ -1,9 +1,9 @@
-export const classBodyTsAst = {
+export const classBodyTsAstTpl = {
   type: 'ClassBody',
   body: []
 }
 
-export const classMethodTsAst = {
+export const classMethodTsAstTpl = {
   type: '', // method use 'ClassMethod'
   decorators: [],
   accessibility: '', // 'public' ? 'priavte'

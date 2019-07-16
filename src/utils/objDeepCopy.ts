@@ -11,5 +11,5 @@ export const objDeepCopy = source => {
         ? objDeepCopy(source[item])
         : source[item];
   }
-  return sourceCopy;
+  return sourceCopy as any;
 };
