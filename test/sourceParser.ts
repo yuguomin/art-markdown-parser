@@ -33,7 +33,12 @@ recast.visit(ast, {
 
 // node.value.declaration.id.name = 'ygm'
 // console.log((node.value.declaration.body.body[0]));
-console.log(JSON.stringify(ast));
+ast.program.body[0].declaration.decorators[0].loc = null;
+ast.program.body[0].declaration.body.loc = null;
+ast.program.body[0].declaration.decorators[0].callee.loc = null;
+ast.program.body[0].declaration.decorators[0].callee.arguments[0].loc = null;
+ast.program.body[0].declaration.decorators[0].callee.callee.loc = null;
+console.log(JSON.stringify(ast.program.body));
 // console.log(recast.print(node).code);
 
 

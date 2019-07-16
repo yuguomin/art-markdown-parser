@@ -7,5 +7,5 @@ import { createImportControllerTsAst } from "./createImportTsAst";
  * @returns 最终tsAST数据
 */
 export const createMockTsAst = (transformData: transformData) => {
-  return createImportControllerTsAst(transformData.mdAstMockPart);
+  createImportControllerTsAst(transformData.mdAstMockPart);
 }

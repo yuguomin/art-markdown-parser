@@ -6,5 +6,7 @@ import recast from 'recast';
  * @param {Object} ast 最终的 TsAst
 */
 export const appendToFile = (ast) => {
-  writeFileSync('./result/mock.ts', `\n${recast.print(ast).code}`,'utf8');
+  try {
+    writeFileSync('./result/mock.ts', `\n${recast.print(ast).code}`,'utf8');
+  } catch (err) { console.log('err:', err); }
 }

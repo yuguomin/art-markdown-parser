@@ -13,7 +13,7 @@ import { appendToFile } from "./md-to-mock/generator";
 */
 export const parseMdToInterface = () => {
   const mdAST = readMdFile();
-  const transformData =  extractNeedTransformData(mdAST);
+  const transformData = extractNeedTransformData(mdAST);
   const interfaceAST = createMockTsAst(transformData);
   appendToFile(interfaceAST);
 }

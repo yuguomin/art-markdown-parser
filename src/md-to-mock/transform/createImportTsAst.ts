@@ -35,6 +35,5 @@ export const createImportTsAst: (valueName: string[], sourceName: string, isDefa
   importAstTpl.source.extra.rawValue = sourceName;
   importAstTpl.source.extra.raw = `'${sourceName}'`;
   importAstTpl.specifiers = importedValues;
-  console.log(JSON.stringify(importAstTpl));
   return importAstTpl;
 }
