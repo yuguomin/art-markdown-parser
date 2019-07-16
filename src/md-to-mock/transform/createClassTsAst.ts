@@ -8,7 +8,7 @@ import { createClassBodyTsAst } from './createClassBodyTsAst';
 export const createClassTsAst = (mdAstMockPart, output) => {
   const exportClassTsAst = objDeepCopy(exportTsAstTpl);
   exportClassTsAst.declaration.type = ExportDeclarationType.class;
-  exportClassTsAst.declaration.decorators.push(createDecoratorTsAst('home'));
+  exportClassTsAst.declaration.decorators.push(createDecoratorTsAst('/home'));
   exportClassTsAst.declaration.id.name = path.basename(output).split('.')[0];
   exportClassTsAst.declaration.body = createClassBodyTsAst(mdAstMockPart);
 }
