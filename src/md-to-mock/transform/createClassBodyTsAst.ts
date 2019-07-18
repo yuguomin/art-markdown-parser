@@ -1,6 +1,6 @@
 import { objDeepCopy } from "../../utils/objDeepCopy";
 import { classBodyTsAstTpl, classMethodTsAstTpl } from "../../template/classBodyTsAstTpl";
-import { ClassBodyType, ClassPrototypeAccessibility, prototypeKindType } from "../../constant/TSAnnotationMap";
+import { ClassBodyType, ClassPrototypeAccessibility, PrototypeKindType } from "../../constant/TSAnnotationMap";
 import { DetailTableMembers } from "../../constant/MarkDown";
 import { flattenArray } from "../../utils/flattenArray";
 import { createDecoratorTsAst } from "./createDecoratorTsAst";
@@ -24,9 +24,10 @@ export const createClassBodyTsAst = (mdAstMockPart) => {
     const classMethodTsAst = objDeepCopy(classMethodTsAstTpl);
     classMethodTsAst.type = ClassBodyType.method;
     classMethodTsAst.accessibility = ClassPrototypeAccessibility.public;
-    classMethodTsAst.kind = prototypeKindType.method;
+    classMethodTsAst.kind = PrototypeKindType.method;
     classMethodTsAst.decorators.push(createDecoratorTsAst(requestUrl, firstWordUpperCase(requestMethod.toLowerCase())));
-    createMethodBodyTsAst(apiInfo.example);
+    classMethodTsAst.body = createMethodBodyTsAst(apiInfo.example);
     classBodyTsAst.body.push(classMethodTsAst);
   });
+  return classBodyTsAst;
 }

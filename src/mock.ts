@@ -12,10 +12,12 @@ import { appendToFile } from "./md-to-mock/generator";
  * 4- 写入内容
 */
 export const parseMdToInterface = (output) => {
-  const mdAST = readMdFile();
-  const transformData = extractNeedTransformData(mdAST);
-  const interfaceAST = createMockTsAst(transformData, output);
-  appendToFile(interfaceAST);
+  try {
+    const mdAST = readMdFile();
+    const transformData = extractNeedTransformData(mdAST);
+    const mockAST = createMockTsAst(transformData, output);
+    appendToFile(mockAST);
+  } catch (err) { console.log('mock err', err); }
 }
 
 parseMdToInterface('mock/home/xxx/xx/MineController.ts');

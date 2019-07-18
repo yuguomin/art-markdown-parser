@@ -11,4 +11,5 @@ export const createClassTsAst = (mdAstMockPart, output) => {
   exportClassTsAst.declaration.decorators.push(createDecoratorTsAst('/home'));
   exportClassTsAst.declaration.id.name = path.basename(output).split('.')[0];
   exportClassTsAst.declaration.body = createClassBodyTsAst(mdAstMockPart);
+  return exportClassTsAst;
 }

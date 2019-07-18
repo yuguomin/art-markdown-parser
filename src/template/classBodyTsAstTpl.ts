@@ -12,12 +12,12 @@ export const classMethodTsAstTpl = {
   generator: false,
   async: false,
   params: [], // method may have
-  body: [],
+  body: {},
   optional: null,
   abstract: null,
   rest: null,
   returnType: null,
   typeParameters: null,
-  defaults: [],
-  expression: false
+  defaults: []
+  // expression: false
 }

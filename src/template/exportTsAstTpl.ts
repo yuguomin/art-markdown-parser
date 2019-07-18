@@ -5,13 +5,11 @@ export const exportTsAstTpl = {
     decorators: [], // class decorators
     id: {
       type: 'Identifier',
-      name: '', // export name
-      optional: false,
-      typeAnnotation: null
+      name: '' // export name
     },
     body: {}, // if class will has body, such as method
-    superClass: null,
-    typeParameters: null,
-    superTypeParameters: null
+    // superClass: null,
+    // typeParameters: null,
+    // superTypeParameters: null
   }
 }

@@ -6,5 +6,7 @@ export const createDecoratorTsAst = (params: string, decoratorName?: string) => 
   const decoratorTsAst = objDeepCopy(decoratorTsAstTpl);
   decoratorTsAst.callee.callee.name = decoratorName || DEFAULT_IMPORT_VALUE;
   decoratorTsAst.callee.arguments[0].value = `${params}`;
+  decoratorTsAst.callee.arguments[0].extra.rawValue = `${params}`;
+  decoratorTsAst.callee.arguments[0].extra.raw = `${params}`;
   return decoratorTsAst;
 };

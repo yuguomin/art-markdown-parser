@@ -52,10 +52,16 @@ export enum ClassPrototypeAccessibility {
 /** 
  * 对应属性类型
  */
-export enum prototypeKindType {
+export enum PrototypeKindType {
   method = 'method'
 }
 
+/** 
+ * 
+ */
+export enum DataExpression {
+  object = 'ObjectExpression'
+}
 
 /** 
  * enum每条生成所需内容定义

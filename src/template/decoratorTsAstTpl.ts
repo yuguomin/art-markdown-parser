@@ -10,6 +10,10 @@ export const decoratorTsAstTpl = {
     arguments: [
       {
         type: 'StringLiteral', // string use 'StringLiteral' ? number? any other else
+        extra: {
+          rawValue: '',
+          raw: ''
+        },
         value: '' // param value
       }
     ]
