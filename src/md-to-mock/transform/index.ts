@@ -13,8 +13,8 @@ const source = readFileSync('./test/interface.ts', 'UTF8');
  * @returns 最终tsAST数据
 */
 export const createMockTsAst = (transformData: transformData, output: string) => {
-  return replaceClassAst(createImportControllerTsAst(transformData.mdAstMockPart),
-  createClassTsAst(transformData.mdAstMockPart, output));
+  createImportControllerTsAst(transformData.mdAstMockPart);
+  return createClassTsAst(transformData.mdAstMockPart, output);
 }
 
 export const replaceClassAst = (importAst, classAst) => {
@@ -31,7 +31,7 @@ export const replaceClassAst = (importAst, classAst) => {
   baseAst.program.body[0].declaration.decorators[0] = test;
   baseAst.program.body[0].declaration.body.body[0].decorators[0].callee.callee.name = 'pppp';
   baseAst.program.body[0].declaration.body.body[0].decorators[0].callee.callee.name = 'pppp';
-  baseAst.program.body[0].declaration.body.body[0].decorators[0].expression = `pppp('/home')`;
+  baseAst.program.body[0].declaration.body.body[0].decorators[0].expression = `ppqpp('/home')`;
   // baseAst.program.body.unshift(importAst);
   // baseAst.program.body = bodyAst;
   // console.log(JSON.stringify(baseAst));

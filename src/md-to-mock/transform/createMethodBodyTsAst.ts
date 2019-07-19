@@ -13,6 +13,7 @@ export const createMethodBodyTsAst = (exampleInfo) => {
   const methodBodyReturnTsAst = objDeepCopy(methodBodyReturnTsAstTpl);
   methodBodyReturnTsAst.argument.properties = methodBody;
   methodBodyReturnTsAst.argument.type = DataExpression.object;
+  // console.log('------------\n', JSON.stringify(methodBodyReturnTsAst));
   methodBodyTsAst.body.push(methodBodyReturnTsAst);
   return methodBodyTsAst;
 }

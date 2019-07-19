@@ -8,6 +8,10 @@ export const classMethodTsAstTpl = {
   decorators: [],
   accessibility: '', // 'public' ? 'priavte'
   static: false, // is static
+  key:{
+    type: 'Identifier',
+    name: '' // method name
+  },
   kind: '', // prototype type, method use 'method'
   generator: false,
   async: false,
