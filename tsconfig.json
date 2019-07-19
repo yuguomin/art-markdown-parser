@@ -61,7 +61,6 @@
   },
   "exclude": [
     "./dist",
-    // "./result/**",
     "./test/**"
   ]
 }

@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Controller, Post, Get } from 'routing-controllers';
 
 @Controller('/home')

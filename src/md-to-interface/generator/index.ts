@@ -6,5 +6,5 @@ import recast from 'recast';
  * @param {Object} ast 最终的 TsAst
 */
 export const appendToFile = (ast) => {
-  writeFileSync('./result/result.ts', `\n${recast.print(ast).code}`,'utf8');
+  writeFileSync('./src/result/result.ts', `\n${recast.print(ast).code}`,'utf8');
 }
