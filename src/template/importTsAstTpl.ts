@@ -19,9 +19,9 @@ const importTsAstTpl =
       raw: '' // import subject
     },
     value: '', // import subject
-    regex: null
+    // regex: null
   },
-  importKind: 'value'
+  // importKind: 'value'
 };
 
 export default importTsAstTpl;

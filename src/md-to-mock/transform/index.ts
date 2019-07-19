@@ -11,6 +11,7 @@ import tsFileAst from "../../template/tsFileAstTpl";
 */
 export const createMockTsAst = (transformData: transformData, output: string) => {
   const tsAst = objDeepCopy(tsFileAst);
+  // console.log(JSON.stringify(createImportControllerTsAst(transformData.mdAstMockPart)));
   tsAst.program.body.push(
     createImportControllerTsAst(transformData.mdAstMockPart),
     createClassTsAst(transformData.mdAstMockPart, output)

@@ -9,6 +9,5 @@ export const removeJsonKeyQuotes: (transformBbj: string) => string = (transformB
     .keys(transformBbj)
     .map(key => `${key}: ${removeJsonKeyQuotes(transformBbj[key])}`)
     .join(`, `);
-    // console.log(props);
   return `{ ${props} }`;
 }

@@ -22,18 +22,18 @@ export const createImportControllerTsAst = (mdAstMockPart) => {
 };
 
 export const createImportTsAst: (valueName: string[], sourceName: string, isDefault?: boolean) => any =
-(valueName, sourceName, isDefault) => {
-  const importAstTpl = objDeepCopy(importTsAstTpl) as any;
-  const importValueType = isDefault ? ImportValueWay.default : ImportValueWay.value;
-  const importedValues = valueName.map((value) => {
-    const singleImportValue = objDeepCopy(importAstTpl.specifiers[0]) as any;
-    singleImportValue.type = importValueType;
-    singleImportValue.imported.name = firstWordUpperCase(value.toLowerCase());
-    return singleImportValue;
-  })
-  importAstTpl.source.value = sourceName;
-  importAstTpl.source.extra.rawValue = sourceName;
-  importAstTpl.source.extra.raw = `'${sourceName}'`;
-  importAstTpl.specifiers = importedValues;
-  return importAstTpl;
-}
+  (valueName, sourceName, isDefault) => {
+    const importAstTpl = objDeepCopy(importTsAstTpl);
+    const importValueType = isDefault ? ImportValueWay.default : ImportValueWay.value;
+    const importedValues = valueName.map((value) => {
+      const singleImportValue = objDeepCopy(importAstTpl.specifiers[0]);
+      singleImportValue.type = importValueType;
+      singleImportValue.imported.name = firstWordUpperCase(value.toLowerCase());
+      return singleImportValue;
+    })
+    importAstTpl.source.value = sourceName;
+    importAstTpl.source.extra.rawValue = sourceName;
+    importAstTpl.source.extra.raw = `'${sourceName}'`;
+    importAstTpl.specifiers = importedValues;
+    return importAstTpl;
+  }

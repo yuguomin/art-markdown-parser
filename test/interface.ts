@@ -1,5 +1,1 @@
-@Controller('/home')
-export default class IndexController {
-  @get('')
-  public getData() {}
-}
+// import { Controller } from 'routing-controllers';
