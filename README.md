@@ -2,6 +2,7 @@
 
 ## 代码说明
 用于为art开发业务代码时，通过规范的markdow文件生成对应模块所需interface和mock文件。
+工具库已经嵌入art项目构造工具，详细使用需要借助[art-core](https://github.com/zbw322092/art-core.git)进行。
 
 ## 环境配置
 安装全局的ts-node用于执行ts脚本
@@ -127,7 +128,7 @@ ts-node ./src/index.ts
  ```
 ```
 
-* 这里的json后期会用于生成mock数据使用
+* 这里的json会用于生成mock数据使用
 	
 
 
