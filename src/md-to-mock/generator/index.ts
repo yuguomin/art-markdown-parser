@@ -7,6 +7,6 @@ import recast from 'recast';
 */
 export const appendToFile = (ast) => {
   try {
-    writeFileSync('./result/mock.ts', `\n${recast.print(ast).code}`,'utf8');
+    writeFileSync('./result/mock.ts', `\n${recast.print(ast, {tabWidth: 2}).code}`,'utf8');
   } catch (err) { console.log('err:', err); }
 }

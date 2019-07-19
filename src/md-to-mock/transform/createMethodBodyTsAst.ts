@@ -8,8 +8,16 @@ export const createMethodBodyTsAst = (exampleInfo) => {
   const methodBodyTsAst = objDeepCopy(methodBodyTsAstTpl);
   const jsonBodyAst = recast.parse(`const test = ${exampleInfo.text}`, {
     parser: tsParser
-  }).program.body
-  const methodBody = jsonBodyAst[0].declarations[0].init.properties;
+  }).program.body;
+  let methodBody = jsonBodyAst[0].declarations[0].init.properties;
+  // console.log(JSON.stringify(methodBody));
+  methodBody = methodBody.map((property) => {
+    property.key.type = 'Identifier';
+    property.key.name = property.key.value;
+    return property;
+  })
+  console.log(JSON.stringify(methodBody));
+  // methodBody[0].key.type = 'Identifier';
   const methodBodyReturnTsAst = objDeepCopy(methodBodyReturnTsAstTpl);
   methodBodyReturnTsAst.argument.properties = methodBody;
   methodBodyReturnTsAst.argument.type = DataExpression.object;
