@@ -1,4 +1,6 @@
 
+import { Controller, Post, Get } from "routing-controllers";
+
 @Controller('/home')
 export default class MineController {
   @Post('/pb/card/bind')
