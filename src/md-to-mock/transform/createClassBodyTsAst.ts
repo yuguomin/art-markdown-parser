@@ -27,7 +27,7 @@ export const createClassBodyTsAst = (mdAstMockPart) => {
     classMethodTsAst.type = ClassBodyType.method;
     classMethodTsAst.accessibility = ClassPrototypeAccessibility.public;
     classMethodTsAst.kind = PrototypeKindType.method;
-    classMethodTsAst.key.name = firstWordLowerCase(toCamelCase(requestUrl));
+    classMethodTsAst.key.name = firstWordLowerCase(toCamelCase(toCamelCase(requestUrl, '-')));
     classMethodTsAst.decorators.push(createDecoratorTsAst(requestUrl, firstWordUpperCase(requestMethod.toLowerCase())));
     classMethodTsAst.body = createMethodBodyTsAst(apiInfo.example);
     classBodyTsAst.body.push(classMethodTsAst);
