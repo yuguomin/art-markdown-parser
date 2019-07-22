@@ -10,4 +10,4 @@ export const methodBodyReturnTsAstTpl = {
     type: '', // value type string ? object ?
     properties: []
   }
-}
+};

@@ -2,7 +2,7 @@ import { flattenArray } from '../../utils/flattenArray';
 import { DetailTableMembers } from '../../constant/MarkDown';
 import { DEFAULT_IMPORT_PACKAGE, DEFAULT_IMPORT_VALUE } from '../../constant/MockConstant';
 import { objDeepCopy } from '../../utils/objDeepCopy';
-import importTsAstTpl from '../../template/importTsAstTpl';
+import { importTsAstTpl } from '../../template/importTsAstTpl';
 import { ImportValueWay } from '../../constant/TSAnnotationMap';
 import { firstWordUpperCase } from '../../utils/firstWordUpperCase';
 
@@ -36,4 +36,4 @@ export const createImportTsAst: (valueName: string[], sourceName: string, isDefa
     importAstTpl.source.extra.raw = `'${sourceName}'`;
     importAstTpl.specifiers = importedValues;
     return importAstTpl;
-  }
+  };

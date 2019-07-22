@@ -1,9 +1,9 @@
-import { readFileSync } from "fs";
+import { readFileSync } from 'fs';
 const source = readFileSync('./test/interface.ts', 'UTF8');
-import { appendToFile } from "../src/md-to-mock/generator";
+import { appendToFile } from '../src/md-to-mock/generator';
 
 import recast from 'recast';
-const tsParser = require("recast/parsers/typescript")
+const tsParser = require('recast/parsers/typescript')
 const ast = recast.parse(source, {
   parser: tsParser
 });

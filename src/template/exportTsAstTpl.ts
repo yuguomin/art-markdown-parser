@@ -12,4 +12,4 @@ export const exportTsAstTpl = {
     // typeParameters: null,
     // superTypeParameters: null
   }
-}
+};

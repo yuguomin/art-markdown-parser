@@ -6,7 +6,7 @@ import { DetailTableMembers, INTERFACE_NAME_PREFIX } from '../../constant/MarkDo
 /** 
  * @description 生成最终的一个interface名字
  * @param detailTable api的detail表格块
-*/
+ */
 export const createInterfaceName = (detailTable: any) => {
   let resultStr: string = '';
   let urlStr: string = '';

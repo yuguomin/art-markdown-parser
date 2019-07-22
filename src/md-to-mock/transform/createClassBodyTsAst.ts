@@ -33,4 +33,4 @@ export const createClassBodyTsAst = (mdAstMockPart) => {
     classBodyTsAst.body.push(classMethodTsAst);
   });
   return classBodyTsAst;
-}
+};

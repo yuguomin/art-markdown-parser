@@ -1,9 +1,9 @@
-import { objDeepCopy } from "../../utils/objDeepCopy";
-import { methodBodyTsAstTpl, methodBodyReturnTsAstTpl } from "../../template/methodBodyTsAstTpl";
+import { objDeepCopy } from '../../utils/objDeepCopy';
+import { methodBodyTsAstTpl, methodBodyReturnTsAstTpl } from '../../template/methodBodyTsAstTpl';
 import recast from 'recast';
-import { DataExpression } from "../../constant/TSAnnotationMap";
-import { removeJsonKeyQuotes } from "../../utils/removeJsonKeyQuotes";
-const tsParser = require("recast/parsers/typescript")
+import { DataExpression } from '../../constant/TSAnnotationMap';
+import { removeJsonKeyQuotes } from '../../utils/removeJsonKeyQuotes';
+const tsParser = require('recast/parsers/typescript')
 
 export const createMethodBodyTsAst = (exampleInfo) => {
   const methodBodyTsAst = objDeepCopy(methodBodyTsAstTpl);
@@ -16,4 +16,4 @@ export const createMethodBodyTsAst = (exampleInfo) => {
   methodBodyReturnTsAst.argument.type = DataExpression.object;
   methodBodyTsAst.body = [methodBodyReturnTsAst];
   return methodBodyTsAst;
-}
+};

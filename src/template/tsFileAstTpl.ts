@@ -1,9 +1,7 @@
-const tsFileAst = {
-  type: "File",
+export const tsFileAst = {
+  type: 'File',
   program: {
-    type: "Program",
+    type: 'Program',
     body: [] // file content
   }
-}
-
-export default tsFileAst;
+};

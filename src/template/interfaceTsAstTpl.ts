@@ -1,35 +1,35 @@
-const exportInterfaceAst = {
-  type: "ExportNamedDeclaration",
+export const exportInterfaceAst = {
+  type: 'ExportNamedDeclaration',
   declaration: {
-    type: "TSInterfaceDeclaration",
+    type: 'TSInterfaceDeclaration',
     id: {
-      type: "Identifier",
-      name: "" // interface name
+      type: 'Identifier',
+      name: '' // interface name
     },
     body: {
-      type: "TSInterfaceBody",
+      type: 'TSInterfaceBody',
       body: [
         {
-          type: "TSPropertySignature",
+          type: 'TSPropertySignature',
           key: {
-            type: "Identifier",
-            name: "" // every key name
+            type: 'Identifier',
+            name: '' // every key name
           },
           optional: false, // is optional
           typeAnnotation: {
-            type: "TSTypeAnnotation",
+            type: 'TSTypeAnnotation',
             typeAnnotation: {
-              type: "", // annotation type
+              type: '', // annotation type
               elementType: {
-                type: "TSTypeReference",
+                type: 'TSTypeReference',
                 typeName: {
-                  type: "Identifier",
-                  name: "" // array interface anntation name
+                  type: 'Identifier',
+                  name: '' // array interface anntation name
                 }
               },
               typeName: {
-                type: "Identifier",
-                name: "" // obj interface anntation name
+                type: 'Identifier',
+                name: '' // obj interface anntation name
               }
             }
           }
@@ -38,4 +38,4 @@ const exportInterfaceAst = {
     }
   }
 };
-export default exportInterfaceAst;
+

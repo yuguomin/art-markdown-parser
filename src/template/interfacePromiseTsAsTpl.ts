@@ -1,62 +1,62 @@
-const interfacePromiseAst = {
-  type: "ExportNamedDeclaration",
+export const interfacePromiseAst = {
+  type: 'ExportNamedDeclaration',
   declaration: {
-    type: "TSInterfaceDeclaration",
+    type: 'TSInterfaceDeclaration',
     id: {
-      type: "Identifier",
-      name: "" // interface name
+      type: 'Identifier',
+      name: '' // interface name
     },
     body: {
-      type: "TSInterfaceBody",
+      type: 'TSInterfaceBody',
       body: [
         {
-          type: "TSMethodSignature", // is a method
+          type: 'TSMethodSignature', // is a method
           key: {
-            type: "Identifier",
-            name: "" // every key name, nearly same as every interface name
+            type: 'Identifier',
+            name: '' // every key name, nearly same as every interface name
           },
           parameters: [
             // methods params array
             {
-              type: "Identifier",
-              name: "", // every params key
+              type: 'Identifier',
+              name: '', // every params key
               typeAnnotation: {
-                type: "TSTypeAnnotation",
+                type: 'TSTypeAnnotation',
                 typeAnnotation: {
-                  type: "", // every params annotation
+                  type: '', // every params annotation
                   typeName: {
-                    type: "Identifier",
-                    name: "" // enum name
+                    type: 'Identifier',
+                    name: '' // enum name
                   }
                 }
               }
             }
           ],
           typeAnnotation: {
-            type: "TSTypeAnnotation",
+            type: 'TSTypeAnnotation',
             typeAnnotation: {
-              type: "TSTypeReference", // annotation type
+              type: 'TSTypeReference', // annotation type
               typeName: {
-                type: "Identifier",
-                name: "Promise"
+                type: 'Identifier',
+                name: 'Promise'
               },
               typeParameters: {
-                type: "TSTypeParameterInstantiation",
+                type: 'TSTypeParameterInstantiation',
                 params: [
                   {
-                    type: "TSTypeReference",
+                    type: 'TSTypeReference',
                     typeName: {
-                      type: "Identifier",
-                      name: "AjaxResult"
+                      type: 'Identifier',
+                      name: 'AjaxResult'
                     },
                     typeParameters: {
-                      type: "TSTypeParameterInstantiation",
+                      type: 'TSTypeParameterInstantiation',
                       params: [
                         {
-                          type: "TSTypeReference",
+                          type: 'TSTypeReference',
                           typeName: {
-                            type: "Identifier",
-                            name: "" // every interface name
+                            type: 'Identifier',
+                            name: '' // every interface name
                           }
                         }
                       ]
@@ -71,5 +71,3 @@ const interfacePromiseAst = {
     }
   }
 };
-
-export default interfacePromiseAst;

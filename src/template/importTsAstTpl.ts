@@ -1,4 +1,4 @@
-const importTsAstTpl =
+export const importTsAstTpl =
 {
   type: 'ImportDeclaration',
   specifiers: [
@@ -23,5 +23,3 @@ const importTsAstTpl =
   },
   // importKind: 'value'
 };
-
-export default importTsAstTpl;

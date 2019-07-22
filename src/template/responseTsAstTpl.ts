@@ -1,62 +1,62 @@
-const responseTsAstTpl = {
-  type: "ExportNamedDeclaration",
+export const responseTsAstTpl = {
+  type: 'ExportNamedDeclaration',
   declaration: {
-    type: "TSInterfaceDeclaration",
+    type: 'TSInterfaceDeclaration',
     id: {
-      type: "Identifier",
-      name: "AjaxResult"
+      type: 'Identifier',
+      name: 'AjaxResult'
     },
     typeParameters: {
-      type: "TSTypeParameterDeclaration",
+      type: 'TSTypeParameterDeclaration',
       params: [
         {
-          type: "TSTypeParameter",
-          name: "T"
+          type: 'TSTypeParameter',
+          name: 'T'
         }
       ]
     },
     body: {
-      type: "TSInterfaceBody",
+      type: 'TSInterfaceBody',
       body: [
         {
-          type: "TSPropertySignature",
+          type: 'TSPropertySignature',
           key: {
-            type: "Identifier",
-            name: "code"
+            type: 'Identifier',
+            name: 'code'
           },
           typeAnnotation: {
-            type: "TSTypeAnnotation",
+            type: 'TSTypeAnnotation',
             typeAnnotation: {
-              type: "TSNumberKeyword"
+              type: 'TSNumberKeyword'
             }
           }
         },
         {
-          type: "TSPropertySignature",
+          type: 'TSPropertySignature',
           key: {
-            type: "Identifier",
-            name: "msg"
+            type: 'Identifier',
+            name: 'msg'
           },
           typeAnnotation: {
-            type: "TSTypeAnnotation",
+            type: 'TSTypeAnnotation',
             typeAnnotation: {
-              type: "TSStringKeyword"
+              type: 'TSStringKeyword'
             }
           }
         },
         {
-          type: "TSPropertySignature",
+          type: 'TSPropertySignature',
           key: {
-            type: "Identifier",
-            name: "data"
+            type: 'Identifier',
+            name: 'data'
           },
           typeAnnotation: {
-            type: "TSTypeAnnotation",
+            type: 'TSTypeAnnotation',
             typeAnnotation: {
-              type: "TSTypeReference",
+              type: 'TSTypeReference',
               typeName: {
-                type: "Identifier",
-                name: "T"
+                type: 'Identifier',
+                name: 'T'
               }
             }
           }
@@ -65,5 +65,3 @@ const responseTsAstTpl = {
     }
   }
 };
-
-export default responseTsAstTpl;

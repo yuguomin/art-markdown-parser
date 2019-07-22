@@ -1,7 +1,7 @@
 export const classBodyTsAstTpl = {
   type: 'ClassBody',
   body: []
-}
+};
 
 export const classMethodTsAstTpl = {
   type: '', // method use 'ClassMethod'
@@ -24,4 +24,4 @@ export const classMethodTsAstTpl = {
   typeParameters: null,
   defaults: []
   // expression: false
-}
+};

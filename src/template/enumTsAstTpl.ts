@@ -1,25 +1,23 @@
-const enumAst = {
-  type: "ExportNamedDeclaration",
+export const enumAst = {
+  type: 'ExportNamedDeclaration',
   declaration: {
-    type: "TSEnumDeclaration",
+    type: 'TSEnumDeclaration',
     id: {
-      type: "Identifier",
-      name: "" // enum name
+      type: 'Identifier',
+      name: '' // enum name
     },
     members: [
       {
-        type: "TSEnumMember",
+        type: 'TSEnumMember',
         id: {
-          type: "Identifier",
-          name: ""
+          type: 'Identifier',
+          name: ''
         },
         initializer: {
-          type: "", // value type
-          value: "" // value
+          type: '', // value type
+          value: '' // value
         }
       }
     ]
   }
 };
-
-export default enumAst;

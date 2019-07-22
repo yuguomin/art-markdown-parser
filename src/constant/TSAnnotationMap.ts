@@ -66,7 +66,7 @@ export enum DataExpression {
 /** 
  * enum每条生成所需内容定义
  */
-export interface singleEnumAst {
+export interface ISingleEnumAst {
   currentName: string;
   rename?: string;
   type: string;
