@@ -125,11 +125,9 @@ ts-node ./src/index.ts
 	        "activity_status": 0
 	    }
 	}
- ```
 ```
 
 * 这里的json会用于生成mock数据使用
-	
 
 
 ## 开发此工具包
