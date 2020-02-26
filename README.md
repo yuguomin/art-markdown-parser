@@ -1,10 +1,8 @@
 # art-markdown-parser
-
-## 代码说明
 用于为art开发业务代码时，通过规范的markdow文件生成对应模块所需interface和mock文件。
-工具库已经嵌入art项目构造工具，详细使用需要借助[art-core](https://github.com/zbw322092/art-core.git)进行。
+工具库已经嵌入art项目构造工具，详细使用需要借助[art-core](https://github.com/art-software/art-core)进行。
 
-## 环境配置
+## 开发工具包环境配置
 安装全局的ts-node用于执行ts脚本
 
 ```shell
@@ -12,14 +10,13 @@ yarn add global ts-node
 ```
 [关于yarn依赖包管理工具](https://yarn.bootcss.com/docs/install/#mac-stable)
 
-## 安装
-安装依赖包
+### 安装依赖包
 
 ```shell
 yarn install
 ```
 
-## 使用方法
+### 使用方法
 #### 1. 将需要转换的markdow文件内容写入对应编译文件中
    markdown 文件地址: /entry.md
    
@@ -128,15 +125,3 @@ ts-node ./src/index.ts
 ```
 
 * 这里的json会用于生成mock数据使用
-
-
-## 开发此工具包
-#### 1. 编译ts文件查看对应的ts语法树
-   编译的ts文件地址: /test/sourceParser.ts
-
-```shell
-ts-node ./test/sourceParser.ts
-```
-
-#### 2. 对应基本语法树template文件夹
-*  /src/template
