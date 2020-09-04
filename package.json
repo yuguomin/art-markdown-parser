@@ -11,7 +11,7 @@
   "author": "ygm",
   "dependencies": {
     "babylon": "7.0.0-beta.47",
-    "marked": "0.6.0",
+    "marked": "0.7.0",
     "recast": "0.17.3",
     "typescript-parser": "2.6.1"
   },
